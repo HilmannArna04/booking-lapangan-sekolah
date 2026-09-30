@@ -1,4 +1,4 @@
-# Booking Lapangan Sekolah - W3
+# Booking Lapangan Sekolah
 
 Stack:
 - PHP Native
@@ -28,7 +28,7 @@ Stack:
 
 7. Setelah admin berhasil dibuat, HAPUS `setup_admin.php`.
 
-## Fitur W3
+## Fitur
 
 - Login
 - Register
