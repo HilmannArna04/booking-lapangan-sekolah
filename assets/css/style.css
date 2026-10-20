@@ -477,3 +477,2725 @@ textarea.form-control {
         grid-column: auto;
     }
 }
+
+/* =========================================================
+   USER BOOKING - SCHEDULE BOARD
+   ========================================================= */
+
+.booking-heading {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.booking-filter-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+}
+
+
+.booking-filter-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.booking-date-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.date-arrow {
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #dbe4ef;
+    background: #ffffff;
+
+    border-radius: 9px;
+
+    color: #1565c0;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.date-arrow:hover {
+    background: #eef6ff;
+}
+
+
+.date-display {
+    min-width: 250px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dbe4ef;
+
+    border-radius: 9px;
+
+    position: relative;
+
+    cursor: pointer;
+
+    box-sizing: border-box;
+}
+
+
+.date-icon {
+    color: #1565c0;
+    font-size: 18px;
+}
+
+
+.date-display strong {
+    display: block;
+
+    color: #1e4f91;
+
+    font-size: 14px;
+}
+
+
+.date-display small {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #64748b;
+
+    font-size: 11px;
+}
+
+
+.date-display input {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   LAPANGAN SELECT
+   ========================================================= */
+
+.booking-location-control {
+    height: 42px;
+
+    min-width: 250px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 0 14px;
+
+    border: 1px solid #dbe4ef;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    box-sizing: border-box;
+}
+
+
+.location-icon {
+    color: #1565c0;
+
+    font-size: 20px;
+}
+
+
+.booking-location-control select {
+    width: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #1e4f91;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.booking-search-btn {
+    height: 42px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SCHEDULE CARD
+   ========================================================= */
+
+.schedule-card {
+    background: #ffffff;
+
+    border: 1px solid #dce6f2;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+.schedule-table-wrap {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.schedule-table {
+    width: 100%;
+
+    min-width: 900px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    table-layout: fixed;
+}
+
+
+.schedule-table th {
+    height: 58px;
+
+    background: #eef6ff;
+
+    border-right: 1px solid #dbe8f5;
+
+    border-bottom: 1px solid #dbe8f5;
+
+    color: #1565c0;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+
+.schedule-table th:last-child {
+    border-right: 0;
+}
+
+
+.schedule-table .court-column {
+    width: 270px;
+
+    text-align: left;
+
+    padding-left: 18px;
+}
+
+
+.schedule-table td {
+    border-right: 1px solid #edf2f7;
+
+    border-bottom: 1px solid #edf2f7;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+}
+
+
+.schedule-table tr:last-child td {
+    border-bottom: 0;
+}
+
+
+.schedule-table td:last-child {
+    border-right: 0;
+}
+
+
+/* =========================================================
+   COURT INFO
+   ========================================================= */
+
+.court-info {
+    height: 112px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 16px !important;
+
+    box-sizing: border-box;
+}
+
+
+.court-thumb {
+    width: 76px;
+    height: 76px;
+
+    flex: 0 0 76px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background: #eaf4ff;
+
+    border: 1px solid #d4e8fb;
+
+    color: #1565c0;
+
+    font-size: 22px;
+
+    font-weight: 700;
+}
+
+
+.court-info strong {
+    display: block;
+
+    color: #244f82;
+
+    font-size: 15px;
+
+    margin-bottom: 7px;
+}
+
+
+.court-info span {
+    display: inline-block;
+
+    padding: 4px 9px;
+
+    border-radius: 12px;
+
+    background: #e8f3ff;
+
+    color: #1671d9;
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SCHEDULE CELL
+   ========================================================= */
+
+.schedule-cell {
+    height: 112px;
+
+    vertical-align: middle;
+}
+
+
+.slot-form {
+    width: 100%;
+    height: 100%;
+}
+
+
+.slot {
+    width: 100%;
+    height: 100%;
+
+    min-height: 96px;
+
+    border: 0;
+
+    border-radius: 9px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   AVAILABLE
+   ========================================================= */
+
+.slot-available {
+    background: #e3f8ec;
+
+    color: #12945f;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+
+.slot-available:hover {
+    background: #d4f3e2;
+
+    transform: translateY(-2px);
+}
+
+
+.slot-available span {
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   BOOKED
+   ========================================================= */
+
+.slot-booked {
+    background: #ffe5e5;
+
+    color: #c93434;
+}
+
+
+.slot-booked strong {
+    font-size: 13px;
+}
+
+
+.slot-booked span {
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   UNAVAILABLE
+   ========================================================= */
+
+.slot-unavailable {
+    background: #edf1f6;
+
+    color: #718096;
+}
+
+
+.slot-unavailable span {
+    font-size: 12px;
+
+    text-align: center;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   SELECTED COURT
+   ========================================================= */
+
+.court-row.selected-court {
+    background: #f7fbff;
+}
+
+
+.court-row.selected-court .court-info {
+    box-shadow: inset 4px 0 0 #1671d9;
+}
+
+
+.court-row.selected-court .court-thumb {
+    background: #dceeff;
+
+    border-color: #a8d1f8;
+}
+
+
+/* =========================================================
+   LEGEND
+   ========================================================= */
+
+.schedule-legend {
+    display: flex;
+
+    align-items: center;
+
+    gap: 28px;
+
+    padding: 18px;
+
+    border-top: 1px solid #e2eaf3;
+
+    background: #fbfdff;
+}
+
+
+.schedule-legend div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    color: #527096;
+
+    font-size: 13px;
+}
+
+
+.legend-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    display: inline-block;
+}
+
+
+.legend-dot.available {
+    background: #2dc77b;
+}
+
+
+.legend-dot.booked {
+    background: #ff7777;
+}
+
+
+.legend-dot.unavailable {
+    background: #9caec2;
+}
+
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.schedule-empty {
+    height: 180px;
+
+    text-align: center;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .booking-filter-form {
+        flex-wrap: wrap;
+    }
+
+    .booking-date-control {
+        width: 100%;
+    }
+
+    .date-display {
+        flex: 1;
+    }
+
+    .booking-location-control {
+        flex: 1;
+
+        min-width: 200px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .booking-filter-form {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .booking-date-control {
+        width: 100%;
+    }
+
+    .booking-location-control {
+        width: 100%;
+    }
+
+    .booking-search-btn {
+        width: 100%;
+    }
+
+    .schedule-legend {
+        flex-wrap: wrap;
+
+        gap: 14px;
+    }
+
+}
+
+/* ===== FORM DETAIL BOOKING USER ===== */
+.booking-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    padding: 24px;
+    background: rgba(15, 23, 42, .58);
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+.booking-modal.is-open {
+    display: flex;
+}
+
+.booking-modal__panel {
+    position: relative;
+    width: min(100%, 560px);
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    padding: 28px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, .22);
+}
+
+.booking-modal__panel h2 {
+    margin: 0 32px 8px 0;
+    color: #172554;
+}
+
+.booking-modal__intro {
+    margin: 0 0 20px;
+    color: #64748b;
+}
+
+.booking-modal__close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: #64748b;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.booking-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 14px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: #eff6ff;
+}
+
+.booking-summary div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.booking-summary div:first-child {
+    grid-column: 1 / -1;
+}
+
+.booking-summary span {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.booking-summary strong {
+    color: #1e3a8a;
+    overflow-wrap: anywhere;
+}
+
+.booking-detail-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.booking-detail-form label {
+    margin-top: 8px;
+    color: #334155;
+    font-weight: 600;
+}
+
+.booking-detail-form label span {
+    color: #dc2626;
+}
+
+.booking-detail-form input, .booking-detail-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 9px;
+    font: inherit;
+    color: #0f172a;
+    background: #fff;
+}
+
+.booking-detail-form input:focus, .booking-detail-form textarea:focus {
+    outline: 2px solid #bfdbfe;
+    border-color: #2563eb;
+}
+
+.booking-modal__actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.booking-modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 600px) {
+    .booking-modal {
+        padding: 12px;
+    }
+
+    .booking-modal__panel {
+        padding: 22px 18px;
+        max-height: calc(100vh - 24px);
+    }
+
+    .booking-summary {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-summary div:first-child {
+        grid-column: auto;
+    }
+}
+
+/* =========================================================
+   LANDING PAGE — design.md tokens and layout
+   Isolasi .landing-page agar dashboard tidak ikut berubah.
+   ========================================================= */
+.landing-page {
+    --color-primary: #155EEF;
+    --color-primary-hover: #124ECC;
+    --color-navy: #102A56;
+    --color-blue-soft: #EAF2FF;
+    --color-blue-wash: #F5F8FF;
+    --color-text: #26344D;
+    --color-muted: #667085;
+    --color-border: #DCE3EE;
+    --color-surface: #fff;
+    --color-page: #fff;
+    --color-available: #168653;
+    --color-available-soft: #E8F7EF;
+    --color-booked: #C83D4D;
+    --color-booked-soft: #FDECEF;
+    --color-unavailable: #667085;
+    --color-unavailable-soft: #F0F2F5;
+    background: var(--color-page);
+    color: var(--color-text);
+    font-family: 'DM Sans', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.landing-page a {
+    text-decoration: none
+}
+
+.landing-container {
+    width: min(1200px, calc(100% - 64px));
+    margin-inline: auto
+}
+
+.landing-nav {
+    width: min(1200px, calc(100% - 64px));
+    min-height: 76px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
+    border-bottom: 1px solid var(--color-border)
+}
+
+.landing-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0
+}
+
+.landing-brand-mark {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    color: var(--color-primary)
+}
+
+.landing-brand-mark svg {
+    width: 100%;
+    height: 100%
+}
+
+.landing-brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 3px
+}
+
+.landing-brand-copy strong {
+    font-size: 11px;
+    letter-spacing: .3px;
+    color: var(--color-navy)
+}
+
+.landing-brand-copy small {
+    font-size: 9px;
+    letter-spacing: .3px;
+    color: var(--color-muted)
+}
+
+.landing-links {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2.8vw, 38px)
+}
+
+.landing-links>a {
+    font-size: 13px;
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color .18s
+}
+
+.landing-links>a:hover, .landing-links>a.active {
+    color: var(--color-primary)
+}
+
+.landing-nav-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-left: 8px
+}
+
+.landing-login, .landing-register, .landing-outline-btn, .landing-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 42px;
+    padding: 0 17px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background .18s, color .18s, border-color .18s
+}
+
+.landing-login, .landing-outline-btn, .landing-secondary-btn {
+    background: #fff;
+    border: 1px solid var(--color-border);
+    color: var(--color-navy)
+}
+
+.landing-login:hover, .landing-outline-btn:hover, .landing-secondary-btn:hover {
+    background: var(--color-blue-wash);
+    border-color: #b9c9e3
+}
+
+.landing-register {
+    background: var(--color-primary);
+    color: #fff
+}
+
+.landing-register:hover, .landing-primary-btn:hover {
+    background: var(--color-primary-hover)
+}
+
+.landing-menu-toggle {
+    display: none
+}
+
+.landing-hero {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 66px
+}
+
+.landing-hero-copy {
+    padding: 0
+}
+
+.landing-eyebrow, .landing-section-kicker {
+    display: block;
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px
+}
+
+.landing-hero h1 {
+    margin: 16px 0 20px;
+    color: var(--color-navy);
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(46px, 5.1vw, 64px);
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -.8px
+}
+
+.landing-hero h1 span {
+    color: var(--color-primary)
+}
+
+.landing-hero-copy>p {
+    max-width: 455px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.7
+}
+
+.landing-hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 26px
+}
+
+.landing-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    min-height: 46px;
+    padding: 0 20px;
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background .18s, border-color .18s
+}
+
+.landing-primary-btn span {
+    font-size: 18px;
+    line-height: 1
+}
+
+.landing-primary-btn:focus-visible, .landing-secondary-btn:focus-visible, .landing-links a:focus-visible {
+    outline: 3px solid #8bb5ff;
+    outline-offset: 3px
+}
+
+.landing-hero-image-wrap {
+    position: relative;
+    min-width: 0
+}
+
+.landing-hero-image {
+    display: block;
+    width: 100%;
+    height: 390px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 12px
+}
+
+.landing-image-label {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: 10px
+}
+
+.landing-label-icon {
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--color-blue-soft);
+    color: var(--color-primary);
+    font-size: 22px
+}
+
+.landing-image-label strong, .landing-image-label small {
+    display: block
+}
+
+.landing-image-label strong {
+    font-size: 13px;
+    color: var(--color-navy)
+}
+
+.landing-image-label small {
+    margin-top: 4px;
+    color: var(--color-muted);
+    font-size: 12px
+}
+
+.landing-benefit-section {
+    padding: 64px 0 68px;
+    background: var(--color-blue-wash)
+}
+
+.landing-section-intro {
+    margin-bottom: 30px
+}
+
+.landing-section-intro h2, .landing-section-heading h2, .landing-schedule-copy h2, .landing-about-layout h2 {
+    margin: 10px 0 0;
+    color: var(--color-navy);
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(32px, 3.4vw, 42px);
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: -.4px
+}
+
+.landing-section-intro>p {
+    margin: 12px 0 0;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.6
+}
+
+.landing-benefits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 32px
+}
+
+.landing-benefit {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    min-width: 0
+}
+
+.landing-benefit-icon {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 10px;
+    background: var(--color-blue-soft);
+    color: var(--color-primary)
+}
+
+.landing-benefit-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round
+}
+
+.landing-benefit h3 {
+    margin: 3px 0 8px;
+    color: var(--color-navy);
+    font-size: 16px;
+    font-weight: 600
+}
+
+.landing-benefit p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.6
+}
+
+.landing-courts-section {
+    padding: 76px 0 80px;
+    background: #fff
+}
+
+.landing-section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px
+}
+
+.landing-section-heading h2 {
+    max-width: 660px
+}
+
+.landing-section-heading p {
+    margin: 12px 0 0;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.6
+}
+
+.landing-outline-btn {
+    flex-shrink: 0
+}
+
+.landing-court-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px
+}
+
+.landing-court-card {
+    display: grid;
+    grid-template-columns: 40% minmax(0, 1fr);
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: #fff
+}
+
+.landing-court-card>img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    object-fit: cover
+}
+
+.landing-court-info {
+    padding: 22px
+}
+
+.landing-court-type {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .8px
+}
+
+.landing-court-info h3 {
+    margin: 0 0 8px;
+    color: var(--color-navy);
+    font-size: 20px;
+    font-weight: 600
+}
+
+.landing-court-info p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.6
+}
+
+.landing-court-info a, .landing-text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600
+}
+
+.landing-court-info a:hover, .landing-text-link:hover {
+    text-decoration: underline
+}
+
+.landing-demo-note {
+    margin: 16px 0 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.landing-schedule-section {
+    padding: 76px 0;
+    background: var(--color-blue-wash)
+}
+
+.landing-schedule-layout {
+    display: grid;
+    grid-template-columns: 1fr .86fr;
+    align-items: center;
+    gap: 72px
+}
+
+.landing-schedule-copy h2 {
+    max-width: 510px
+}
+
+.landing-schedule-copy>p {
+    max-width: 520px;
+    margin: 16px 0 0;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.7
+}
+
+.landing-schedule-copy .landing-primary-btn {
+    margin-top: 24px
+}
+
+.landing-schedule-preview {
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: #fff
+}
+
+.landing-preview-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--color-border)
+}
+
+.landing-preview-head strong, .landing-preview-head small {
+    display: block
+}
+
+.landing-preview-head strong {
+    color: var(--color-navy);
+    font-size: 18px;
+    font-weight: 600
+}
+
+.landing-preview-head small {
+    margin-top: 5px;
+    color: var(--color-muted);
+    font-size: 13px
+}
+
+.landing-calendar-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    background: var(--color-blue-soft);
+    color: var(--color-primary);
+    font-size: 23px
+}
+
+.landing-preview-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 17px 0;
+    border-bottom: 1px solid #edf0f5
+}
+
+.landing-preview-time {
+    font-size: 14px;
+    color: var(--color-text);
+    font-weight: 500
+}
+
+.landing-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 9px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap
+}
+
+.landing-status i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: currentColor
+}
+
+.status-available {
+    color: var(--color-available);
+    background: var(--color-available-soft)
+}
+
+.status-booked {
+    color: var(--color-booked);
+    background: var(--color-booked-soft)
+}
+
+.status-unavailable {
+    color: var(--color-unavailable);
+    background: var(--color-unavailable-soft)
+}
+
+.landing-preview-note {
+    margin: 15px 0 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.landing-steps-section {
+    padding: 78px 0 82px;
+    background: #fff
+}
+
+.landing-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px
+}
+
+.landing-step {
+    display: flex;
+    gap: 18px;
+    padding: 22px 0;
+    border-top: 1px solid var(--color-border)
+}
+
+.landing-step-number {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: 32px;
+    line-height: 1;
+    color: var(--color-primary)
+}
+
+.landing-step h3 {
+    margin: 2px 0 9px;
+    color: var(--color-navy);
+    font-size: 18px;
+    font-weight: 600
+}
+
+.landing-step p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 14px;
+    line-height: 1.65
+}
+
+.landing-steps-action {
+    margin-top: 24px
+}
+
+.landing-about-section {
+    padding: 72px 0;
+    background: var(--color-blue-wash)
+}
+
+.landing-about-layout {
+    display: grid;
+    grid-template-columns: .85fr 1fr;
+    gap: 80px;
+    align-items: start
+}
+
+.landing-about-layout h2 {
+    max-width: 430px
+}
+
+.landing-about-copy p {
+    margin: 0 0 14px;
+    color: var(--color-muted);
+    font-size: 16px;
+    line-height: 1.75
+}
+
+.landing-text-link {
+    margin-top: 4px
+}
+
+.landing-footer {
+    background: var(--color-navy);
+    color: #fff
+}
+
+.landing-footer-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    padding-top: 48px;
+    padding-bottom: 40px
+}
+
+.landing-brand-footer .landing-brand-copy strong {
+    color: #fff
+}
+
+.landing-brand-footer .landing-brand-copy small {
+    color: #c6d4ee
+}
+
+.landing-footer-about {
+    max-width: 360px
+}
+
+.landing-footer-about>p {
+    max-width: 340px;
+    margin: 16px 0 0;
+    color: #c6d4ee;
+    font-size: 14px;
+    line-height: 1.7
+}
+
+.landing-footer-links {
+    display: flex;
+    gap: 80px
+}
+
+.landing-footer-links>div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px
+}
+
+.landing-footer-links strong {
+    margin-bottom: 3px;
+    color: #fff;
+    font-size: 14px
+}
+
+.landing-footer-links a {
+    color: #c6d4ee;
+    font-size: 14px
+}
+
+.landing-footer-links a:hover {
+    color: #fff
+}
+
+.landing-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 1px solid rgba(255, 255, 255, .16);
+    color: #c6d4ee;
+    font-size: 12px
+}
+
+@media(max-width:900px) {
+    .landing-container, .landing-nav {
+        width: calc(100% - 48px)
+    }
+
+    .landing-hero {
+        gap: 28px;
+        padding-top: 48px;
+        padding-bottom: 52px
+    }
+
+    .landing-hero h1 {
+        font-size: clamp(40px, 5vw, 52px)
+    }
+
+    .landing-hero-image {
+        height: 320px
+    }
+
+    .landing-benefits {
+        gap: 20px
+    }
+
+    .landing-court-card {
+        grid-template-columns: 1fr
+    }
+
+    .landing-court-card>img {
+        height: 190px;
+        min-height: 0
+    }
+
+    .landing-court-info {
+        padding: 20px
+    }
+
+    .landing-schedule-layout {
+        gap: 32px
+    }
+
+    .landing-about-layout {
+        gap: 40px
+    }
+
+    .landing-footer-links {
+        gap: 40px
+    }
+}
+
+@media(max-width:767px) {
+    .landing-container, .landing-nav {
+        width: calc(100% - 36px)
+    }
+
+    .landing-nav {
+        min-height: 72px;
+        position: relative
+    }
+
+    .landing-menu-toggle {
+        display: block;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        background: #fff;
+        color: var(--color-navy);
+        padding: 7px 11px;
+        font-size: 21px
+    }
+
+    .landing-links {
+        display: none;
+        position: absolute;
+        z-index: 20;
+        top: 64px;
+        left: 0;
+        right: 0;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        background: #fff
+    }
+
+    .landing-links.is-open {
+        display: flex;
+        flex-direction: column
+    }
+
+    .landing-links>a {
+        padding: 12px
+    }
+
+    .landing-nav-actions {
+        margin: 8px 0 0;
+        padding-top: 12px;
+        border-top: 1px solid var(--color-border)
+    }
+
+    .landing-nav-actions a {
+        flex: 1
+    }
+
+    .landing-hero {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding-top: 46px;
+        padding-bottom: 48px
+    }
+
+    .landing-hero h1 {
+        font-size: clamp(40px, 10vw, 48px)
+    }
+
+    .landing-hero-copy>p, .landing-schedule-copy>p, .landing-about-copy p {
+        font-size: 15px
+    }
+
+    .landing-hero-image {
+        height: 270px
+    }
+
+    .landing-benefit-section, .landing-courts-section, .landing-schedule-section, .landing-steps-section, .landing-about-section {
+        padding: 52px 0
+    }
+
+    .landing-section-intro h2, .landing-section-heading h2, .landing-schedule-copy h2, .landing-about-layout h2 {
+        font-size: 34px
+    }
+
+    .landing-benefits {
+        grid-template-columns: 1fr;
+        gap: 24px
+    }
+
+    .landing-section-heading {
+        align-items: flex-start;
+        flex-direction: column
+    }
+
+    .landing-court-grid {
+        grid-template-columns: 1fr;
+        gap: 16px
+    }
+
+    .landing-court-card {
+        grid-template-columns: 38% minmax(0, 1fr)
+    }
+
+    .landing-court-card>img {
+        height: 100%;
+        min-height: 175px
+    }
+
+    .landing-court-info {
+        padding: 16px
+    }
+
+    .landing-court-info h3 {
+        font-size: 18px
+    }
+
+    .landing-schedule-layout, .landing-about-layout {
+        grid-template-columns: 1fr;
+        gap: 28px
+    }
+
+    .landing-steps {
+        grid-template-columns: 1fr;
+        gap: 12px
+    }
+
+    .landing-step {
+        padding: 18px 0
+    }
+
+    .landing-footer-main {
+        flex-direction: column;
+        gap: 32px;
+        padding-top: 36px;
+        padding-bottom: 30px
+    }
+
+    .landing-footer-links {
+        gap: 70px
+    }
+
+    .landing-footer-bottom {
+        flex-direction: column;
+        gap: 8px
+    }
+}
+
+@media(max-width:420px) {
+    .landing-hero-actions {
+        align-items: stretch;
+        flex-direction: column
+    }
+
+    .landing-hero-actions a {
+        width: 100%
+    }
+
+    .landing-court-card {
+        grid-template-columns: 1fr
+    }
+
+    .landing-court-card>img {
+        height: 190px;
+        min-height: 0
+    }
+
+    .landing-schedule-preview {
+        padding: 17px
+    }
+
+    .landing-preview-time {
+        font-size: 12px
+    }
+
+    .landing-status {
+        font-size: 11px;
+        padding: 6px 7px
+    }
+
+    .desktop-break {
+        display: none
+    }
+}
+
+
+/* ===== INTERAKSI & MOTION LANDING PAGE ===== */
+html:has(body.landing-page) {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+}
+
+.landing-page {
+    overflow-x: clip;
+}
+
+.landing-page main section[id] {
+    scroll-margin-top: 22px;
+}
+
+.landing-scroll-progress {
+    position: fixed;
+    inset: 0 auto auto 0;
+    z-index: 999;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1769e8, #65a5ff);
+    box-shadow: 0 1px 8px rgba(23, 105, 232, .2);
+    transition: width .08s linear;
+}
+
+.landing-links>a {
+    position: relative;
+    transition: color .25s ease, background-color .25s ease, transform .25s ease;
+}
+
+.landing-links>a:not(.landing-login):not(.landing-register)::after {
+    content: "";
+    position: absolute;
+    left: 12px;
+    right: 12px;
+    bottom: -8px;
+    height: 2px;
+    border-radius: 3px;
+    background: var(--color-primary, #1769e8);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform .28s cubic-bezier(.2, .75, .25, 1);
+}
+
+.landing-links>a:not(.landing-login):not(.landing-register):hover::after,
+.landing-links>a:not(.landing-login):not(.landing-register).active::after {
+    transform: scaleX(1);
+}
+
+.landing-links>a.active {
+    color: var(--color-primary, #1769e8);
+}
+
+.landing-menu-toggle {
+    transition: color .2s ease, background .2s ease, border-color .2s ease, transform .2s ease;
+}
+
+.landing-menu-toggle:hover,
+.landing-menu-toggle.is-active {
+    color: #fff;
+    background: var(--color-primary, #1769e8);
+    border-color: var(--color-primary, #1769e8);
+}
+
+.landing-primary-btn,
+.landing-secondary-btn,
+.landing-register,
+.landing-login,
+.landing-outline-btn,
+.landing-text-link {
+    transition: color .24s ease, background-color .24s ease, border-color .24s ease,
+        box-shadow .24s ease, transform .24s cubic-bezier(.2, .75, .25, 1);
+    will-change: transform;
+}
+
+.landing-primary-btn:hover,
+.landing-register:hover {
+    background: #064fc9;
+    box-shadow: 0 10px 24px rgba(23, 105, 232, .24);
+}
+
+.landing-secondary-btn:hover,
+.landing-login:hover,
+.landing-outline-btn:hover {
+    color: #fff;
+    background: var(--color-primary, #1769e8);
+    border-color: var(--color-primary, #1769e8);
+    box-shadow: 0 7px 18px rgba(23, 105, 232, .12);
+}
+
+.landing-primary-btn:active,
+.landing-secondary-btn:active,
+.landing-register:active,
+.landing-login:active,
+.landing-outline-btn:active,
+.landing-primary-btn.is-pressed,
+.landing-secondary-btn.is-pressed,
+.landing-register.is-pressed,
+.landing-login.is-pressed,
+.landing-outline-btn.is-pressed {
+    transform: translateY(1px) scale(.985);
+    box-shadow: 0 2px 7px rgba(23, 65, 125, .14);
+}
+
+.landing-primary-btn span,
+.landing-secondary-btn span,
+.landing-outline-btn span,
+.landing-court-info a span,
+.landing-text-link span {
+    display: inline-block;
+    transition: transform .24s ease;
+}
+
+.landing-primary-btn:hover span,
+.landing-secondary-btn:hover span,
+.landing-outline-btn:hover span,
+.landing-court-info a:hover span,
+.landing-text-link:hover span {
+    transform: translateX(4px);
+}
+
+.landing-court-card,
+.landing-benefit,
+.landing-step,
+.landing-schedule-preview,
+.landing-hero-image {
+    transition: transform .38s cubic-bezier(.2, .75, .25, 1), box-shadow .38s ease,
+        border-color .3s ease;
+}
+
+.landing-court-card:hover {
+    transform: translateY(-5px);
+    border-color: #c9dcff;
+    box-shadow: 0 18px 40px rgba(21, 52, 102, .10);
+}
+
+.landing-benefit:hover .landing-benefit-icon {
+    color: #fff;
+    background: var(--color-primary, #1769e8);
+    transform: translateY(-3px) rotate(-3deg);
+}
+
+.landing-benefit-icon {
+    transition: color .25s ease, background .25s ease, transform .25s ease;
+}
+
+.landing-step:hover .landing-step-number {
+    transform: translateY(-3px);
+    color: #5596f7;
+}
+
+.landing-step-number {
+    transition: color .25s ease, transform .25s ease;
+}
+
+.landing-hero-image-wrap {
+    animation: landingHeroFloatIn .85s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.landing-image-label {
+    animation: landingLabelIn .7s .35s ease both;
+}
+
+.landing-brand-mark {
+    transition: transform .35s ease, background-color .25s ease;
+}
+
+.landing-brand:hover .landing-brand-mark {
+    transform: rotate(-8deg) scale(1.05);
+}
+
+/* Reveal is activated by JavaScript; without JS the content remains visible. */
+.landing-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity .68s ease, transform .68s cubic-bezier(.2, .7, .2, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+}
+
+.landing-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.landing-hero-copy.landing-reveal {
+    transform: translateY(18px);
+}
+
+.landing-hero-copy.landing-reveal.is-visible {
+    transform: translateY(0);
+}
+
+/* =========================================
+   LOGIN & REGISTER PAGE
+========================================= */
+
+body:has(.auth-screen) {
+    margin: 0;
+    min-height: 100vh;
+    background: #f5f7fb;
+}
+
+.auth-screen {
+    width: 100%;
+    min-height: 100vh;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #f5f7fb;
+    color: #172b4d;
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+.auth-panel {
+    width: 100%;
+    max-width: 490px;
+    margin: auto;
+}
+
+/* LOGO */
+
+.auth-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 32px;
+    text-decoration: none;
+    color: #155eef;
+}
+
+.auth-brand-mark {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+}
+
+.auth-brand-mark svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.auth-brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.auth-brand-copy strong {
+    color: #102a56;
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+
+.auth-brand-copy small {
+    color: #667085;
+    font-size: 10px;
+    letter-spacing: .4px;
+}
+
+/* JUDUL */
+
+.auth-heading {
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+.auth-kicker {
+    display: block;
+    margin-bottom: 12px;
+    color: #667085;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.auth-heading h1 {
+    margin: 0;
+    color: #172b4d;
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.auth-heading p {
+    margin: 12px 0 0;
+    color: #667085;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* FORM */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+}
+
+.auth-field label {
+    color: #344054;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.auth-field label span {
+    color: #d92d20;
+}
+
+.auth-field .form-control {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    outline: none;
+    background: #fff;
+    color: #101828;
+    font-family: inherit;
+    font-size: 15px;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, .04);
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.auth-field .form-control:focus {
+    border-color: #155eef;
+    box-shadow: 0 0 0 4px rgba(21, 94, 239, .12);
+}
+
+/* TOMBOL LOGIN / DAFTAR */
+
+.auth-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 52px;
+    box-sizing: border-box;
+    margin-top: 3px;
+    padding: 13px 20px;
+    border: 1px solid #155eef;
+    border-radius: 999px;
+    background: #155eef;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+}
+
+.auth-submit:hover {
+    background: #104bc4;
+    border-color: #104bc4;
+    box-shadow: 0 7px 18px rgba(21, 94, 239, .2);
+}
+
+.auth-submit:active {
+    transform: scale(.99);
+}
+
+.auth-submit span {
+    font-size: 19px;
+    transition: transform .2s ease;
+}
+
+.auth-submit:hover span {
+    transform: translateX(4px);
+}
+
+/* PESAN ERROR */
+
+.auth-alert {
+    margin-bottom: 18px;
+}
+
+/* PEMBATAS */
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 25px 0 20px;
+    color: #98a2b3;
+    font-size: 12px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #d0d5dd;
+}
+
+/* LINK LOGIN / REGISTER */
+
+.auth-switch {
+    margin: 0;
+    color: #667085;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-switch a,
+.auth-back-link {
+    color: #155eef;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-switch a:hover,
+.auth-back-link:hover {
+    text-decoration: underline;
+}
+
+.auth-back-link {
+    display: block;
+    width: fit-content;
+    margin: 22px auto 0;
+    font-size: 13px;
+}
+
+.auth-footnote {
+    margin: 28px 0 0;
+    color: #98a2b3;
+    text-align: center;
+    font-size: 11px;
+}
+
+
+/* REGISTER - SAMAKAN DENGAN DESAIN LOGIN */
+
+body:has(.auth-page) {
+    margin: 0;
+    background: #f4f6fa;
+}
+
+.auth-page {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #f4f6fa;
+    color: #172b4d;
+    font-family: "DM Sans", Arial, sans-serif;
+}
+
+/* Hilangkan tampilan card lama */
+.auth-page .auth-card {
+    width: 100%;
+    max-width: 490px;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 20px 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Judul */
+.auth-page .auth-card h1 {
+    margin: 0 0 12px;
+    color: #172b4d;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.auth-page .auth-card > p {
+    margin: 12px 0 28px;
+    color: #667085;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Form */
+.auth-page .auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.auth-page .auth-card .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-width: 0;
+    margin: 0;
+}
+
+.auth-page .auth-card label {
+    color: #344054;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.auth-page .auth-card .form-control {
+    width: 100%;
+    min-width: 0;
+    min-height: 52px;
+    box-sizing: border-box;
+    padding: 13px 16px;
+    border: 1px solid #d0d5dd;
+    border-radius: 10px;
+    background: #fff;
+    color: #101828;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    box-shadow: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.auth-page .auth-card .form-control:focus {
+    border-color: #155eef;
+    box-shadow: 0 0 0 4px rgba(21, 94, 239, .12);
+}
+
+/* Password berdampingan */
+.auth-page .auth-card .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+/* Tombol daftar */
+.auth-page .auth-card button.btn-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    margin-top: 4px;
+    padding: 13px 20px;
+    border: 1px solid #155eef;
+    border-radius: 999px;
+    background: #155eef;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s, box-shadow .2s, transform .2s;
+}
+
+.auth-page .auth-card button.btn-primary:hover {
+    border-color: #104bc4;
+    background: #104bc4;
+    box-shadow: 0 7px 18px rgba(21, 94, 239, .2);
+}
+
+.auth-page .auth-card button.btn-primary:active {
+    transform: scale(.99);
+}
+
+/* Link login */
+.auth-page .auth-card .auth-link {
+    margin-top: 24px;
+    color: #667085;
+    text-align: center;
+    font-size: 14px;
+}
+
+.auth-page .auth-card .auth-link a {
+    color: #155eef;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-page .auth-card .auth-link a:hover {
+    text-decoration: underline;
+}
+
+/* Pesan error */
+.auth-page .auth-card .alert {
+    margin-bottom: 16px;
+}
+
+/* Tampilan HP */
+@media (max-width: 520px) {
+    .auth-page {
+        align-items: flex-start;
+        padding: 24px 20px;
+    }
+
+    .auth-page .auth-card h1 {
+        font-size: 34px;
+    }
+
+    .auth-page .auth-card .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* RESPONSIVE HP */
+
+@media (max-width: 520px) {
+    .auth-screen {
+        align-items: flex-start;
+        padding: 25px 20px;
+    }
+
+    .auth-panel {
+        padding: 15px 0;
+    }
+
+    .auth-heading h1 {
+        font-size: 34px;
+    }
+
+    .auth-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* AKSESIBILITAS */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .auth-submit,
+    .auth-submit span,
+    .auth-field .form-control {
+        transition: none;
+    }
+}
+
+@keyframes landingHeroFloatIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes landingLabelIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 767px) {
+    .landing-links>a:not(.landing-login):not(.landing-register)::after {
+        left: 12px;
+        right: auto;
+        width: 36px;
+        bottom: 5px;
+    }
+
+    .landing-court-card:hover {
+        transform: translateY(-2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:has(body.landing-page) {
+        scroll-behavior: auto;
+    }
+
+    .landing-page *, .landing-page *::before, .landing-page *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+
+    .landing-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+
+/* =========================================
+   KELOLA BOOKING — design.md
+   ========================================= */
+
+.booking-management-page {
+    --booking-primary: #155EEF;
+    --booking-primary-hover: #124ECC;
+    --booking-navy: #102A56;
+    --booking-bg: #F5F8FF;
+    --booking-border: #DCE3EE;
+    --booking-text: #26344D;
+    --booking-muted: #667085;
+
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    color: var(--booking-text);
+    font-family: "DM Sans", Inter, sans-serif;
+}
+
+.booking-management-page .page-heading {
+    margin-bottom: 24px;
+}
+
+.booking-management-page .page-heading h2 {
+    color: var(--booking-navy);
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.booking-management-page .page-heading p {
+    color: var(--booking-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.booking-management-page .table-card {
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid var(--booking-border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(16, 42, 86, 0.025);
+}
+
+.booking-management-page .table-header {
+    padding: 18px;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--booking-border);
+}
+
+.booking-management-page .filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.booking-management-page .filters input,
+.booking-management-page .filters select {
+    box-sizing: border-box;
+    min-height: 40px;
+    padding: 9px 12px;
+    color: var(--booking-text);
+    background: #FFFFFF;
+    border: 1px solid #D0D9E7;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 13px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.booking-management-page .filters input[name="search"] {
+    flex: 1 1 240px;
+    min-width: 180px;
+}
+
+.booking-management-page .filters input[type="date"],
+.booking-management-page .filters select {
+    flex: 0 1 180px;
+}
+
+.booking-management-page .filters input:focus,
+.booking-management-page .filters select:focus {
+    outline: none;
+    border-color: var(--booking-primary);
+    box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.10);
+}
+
+.booking-management-page .btn {
+    min-height: 36px;
+    padding: 9px 13px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.booking-management-page .btn-primary {
+    color: #FFFFFF;
+    background: var(--booking-primary);
+}
+
+.booking-management-page .btn-primary:hover {
+    background: var(--booking-primary-hover);
+}
+
+.booking-management-page .btn-secondary {
+    color: #344054;
+    background: #F0F4F9;
+}
+
+.booking-management-page .btn-secondary:hover {
+    background: #E4EAF3;
+}
+
+.booking-management-page .table-wrap {
+    overflow-x: auto;
+}
+
+.booking-management-page table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.booking-management-page th {
+    padding: 14px 16px;
+    color: #475467;
+    background: #F8FAFD;
+    border-bottom: 1px solid var(--booking-border);
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.booking-management-page td {
+    padding: 15px 16px;
+    color: var(--booking-text);
+    border-bottom: 1px solid var(--booking-border);
+    font-size: 12px;
+    line-height: 1.5;
+    vertical-align: middle;
+}
+
+.booking-management-page tbody tr {
+    transition: background 0.15s;
+}
+
+.booking-management-page tbody tr:hover {
+    background: #F8FAFF;
+}
+
+.booking-management-page tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.booking-management-page td strong {
+    color: var(--booking-navy);
+    overflow-wrap: anywhere;
+}
+
+.booking-management-page td small {
+    color: var(--booking-muted);
+    font-size: 11px;
+    overflow-wrap: anywhere;
+}
+
+.booking-management-page .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    min-width: 150px;
+}
+
+.booking-management-page .booking-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.booking-management-page .status-menunggu {
+    color: #985B00;
+    background: #FFF3D6;
+}
+
+.booking-management-page .status-dikonfirmasi {
+    color: #167047;
+    background: #E7F7EE;
+}
+
+.booking-management-page .status-ditolak {
+    color: #B42332;
+    background: #FDECEF;
+}
+
+.booking-management-page .status-selesai {
+    color: #155EEF;
+    background: #EAF2FF;
+}
+
+.booking-management-page .empty {
+    padding: 36px 20px;
+    color: var(--booking-muted);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .booking-management-page {
+        padding: 20px 16px;
+    }
+
+    .booking-management-page .page-heading h2 {
+        font-size: 21px;
+    }
+
+    .booking-management-page .table-header {
+        padding: 14px;
+    }
+
+    .booking-management-page .filters {
+        align-items: stretch;
+    }
+
+    .booking-management-page .filters input,
+    .booking-management-page .filters select,
+    .booking-management-page .filters button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .booking-management-page th,
+    .booking-management-page td {
+        padding: 12px;
+    }
+}
+
+/* FIX LAYOUT ADMIN */
+:root {
+    --sidebar-width: 240px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000;
+    background: #FFFFFF;
+    border-right: 1px solid #DCE3EE;
+}
+
+.content.booking-management-page {
+    width: auto;
+    min-width: 0;
+    min-height: 100vh;
+    margin-left: var(--sidebar-width);
+    padding: 28px 32px;
+    background: #F5F8FF;
+    font-family: "DM Sans", sans-serif;
+}
+
+.booking-management-page .table-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    background: #FFFFFF;
+    border: 1px solid #DCE3EE;
+    border-radius: 12px;
+}
+
+.booking-management-page .table-wrap {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.booking-management-page table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.booking-management-page th,
+.booking-management-page td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #DCE3EE;
+    text-align: left;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .content.booking-management-page {
+        margin-left: 0;
+        padding: 20px 16px;
+    }
+}
