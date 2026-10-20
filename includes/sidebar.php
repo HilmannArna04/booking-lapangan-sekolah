@@ -17,6 +17,13 @@
         <a href="/booking-lapangan-sekolah/admin/jadwal/index.php" class="<?= ($active_menu ?? '') === 'jadwal' ? 'active' : '' ?>">
             <span>◷</span> Data Jadwal
         </a>
+        <a href="/booking-lapangan-sekolah/admin/booking/index.php" class="<?= ($active_menu ?? '') === 'booking' ? 'active' : '' ?>">
+            <span>*</span> Data Booking
+        </a>
+        <a href="/booking-lapangan-sekolah/admin/laporan/index.php"
+            class="<?= ($active_menu ?? '') === 'laporan' ? 'active' : '' ?>">
+            <span>▤</span> Laporan & Statistik
+        </a>
         <a href="/booking-lapangan-sekolah/admin/pengguna/index.php" class="<?= ($active_menu ?? '') === 'pengguna' ? 'active' : '' ?>">
             <span>◉</span> Data Pengguna
         </a>
