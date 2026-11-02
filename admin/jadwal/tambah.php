@@ -16,28 +16,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $jam_selesai = $_POST['jam_selesai'] ?? "";
     $status = $_POST['status'] ?? "tersedia";
 
+    // Validasi dasar dan tanggal berdasarkan zona waktu WIB.
     if ($lapangan_id <= 0 || $tanggal === "" || $jam_mulai === "" || $jam_selesai === "") {
         $error = "Semua data jadwal wajib diisi.";
+    } elseif ($tanggal < date('Y-m-d')) {
+        $error = "Tanggal jadwal tidak boleh berada di masa lalu.";
     } elseif ($jam_mulai >= $jam_selesai) {
         $error = "Jam selesai harus lebih besar dari jam mulai.";
+    } elseif (!in_array($status, ['tersedia', 'tidak_tersedia'], true)) {
+        $error = "Status jadwal tidak valid.";
     } else {
-        $stmt = mysqli_prepare($conn, "SELECT id FROM jadwal WHERE lapangan_id=? AND tanggal=? AND jam_mulai=? AND jam_selesai=?");
-        mysqli_stmt_bind_param($stmt, "isss", $lapangan_id, $tanggal, $jam_mulai, $jam_selesai);
+        // Cegah semua bentuk irisan waktu pada lapangan dan tanggal yang sama.
+        // Contoh: 08:00-10:00 akan bentrok dengan 09:00-11:00.
+        $stmt = mysqli_prepare(
+            $conn,
+            "SELECT id FROM jadwal
+             WHERE lapangan_id = ?
+               AND tanggal = ?
+               AND jam_mulai < ?
+               AND jam_selesai > ?
+             LIMIT 1"
+        );
+        mysqli_stmt_bind_param($stmt, "isss", $lapangan_id, $tanggal, $jam_selesai, $jam_mulai);
         mysqli_stmt_execute($stmt);
-        $exists = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
+        $overlap = mysqli_fetch_assoc(mysqli_stmt_get_result($stmt));
         mysqli_stmt_close($stmt);
 
-        if ($exists) {
-            $error = "Jadwal yang sama sudah tersedia.";
+        if ($overlap) {
+            $error = "Jadwal bertumpang tindih dengan slot lain pada lapangan dan tanggal tersebut.";
         } else {
             $stmt = mysqli_prepare($conn, "INSERT INTO jadwal (lapangan_id,tanggal,jam_mulai,jam_selesai,status) VALUES (?,?,?,?,?)");
             mysqli_stmt_bind_param($stmt, "issss", $lapangan_id, $tanggal, $jam_mulai, $jam_selesai, $status);
-            mysqli_stmt_execute($stmt);
+            if (mysqli_stmt_execute($stmt)) {
+                mysqli_stmt_close($stmt);
+                log_activity($conn, $_SESSION['user_id'], "Tambah Jadwal", "Menambahkan jadwal lapangan ID $lapangan_id.");
+                flash("jadwal", "Jadwal berhasil ditambahkan.");
+                redirect("index.php");
+            }
             mysqli_stmt_close($stmt);
-
-            log_activity($conn, $_SESSION['user_id'], "Tambah Jadwal", "Menambahkan jadwal lapangan ID $lapangan_id.");
-            flash("jadwal", "Jadwal berhasil ditambahkan.");
-            redirect("index.php");
+            $error = "Jadwal gagal disimpan. Silakan coba lagi.";
         }
     }
 }
@@ -49,8 +66,13 @@ require_once __DIR__ . "/../../includes/header.php";
     <?php require __DIR__ . "/../../includes/navbar.php"; ?>
     <?php require __DIR__ . "/../../includes/sidebar.php"; ?>
     <main class="content">
-        <div class="page-heading"><div><h2>Tambah Jadwal</h2><p>Tambahkan slot waktu lapangan.</p></div></div>
-        <?php if($error): ?><div class="alert alert-error"><?= e($error) ?></div><?php endif; ?>
+        <div class="page-heading">
+            <div>
+                <h2>Tambah Jadwal</h2>
+                <p>Tambahkan slot waktu lapangan.</p>
+            </div>
+        </div>
+        <?php if ($error): ?><div class="alert alert-error"><?= e($error) ?></div><?php endif; ?>
 
         <div class="form-card">
             <form method="POST">
@@ -58,7 +80,7 @@ require_once __DIR__ . "/../../includes/header.php";
                     <label>Lapangan</label>
                     <select class="form-control" name="lapangan_id" required>
                         <option value="">Pilih lapangan</option>
-                        <?php while($c=mysqli_fetch_assoc($courts)): ?>
+                        <?php while ($c = mysqli_fetch_assoc($courts)): ?>
                             <option value="<?= $c['id'] ?>"><?= e($c['nama']) ?></option>
                         <?php endwhile; ?>
                     </select>

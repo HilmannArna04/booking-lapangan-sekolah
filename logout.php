@@ -18,6 +18,5 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-session_destroy();
 
 redirect("/booking-lapangan-sekolah/login.php");

@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap');
+
+.admin-booking-detail-v3 {
+    --db-primary: #155EEF;
+    --db-navy: #102A56;
+    --db-muted: #667FA8;
+    --db-border: #DCE7F8;
+    --db-wash: #F5F8FF;
+    --db-green: #0E9F6E;
+    --db-red: #E5484D;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--db-navy);
+    background: var(--db-wash);
+    padding: 26px 30px 42px;
+    min-height: calc(100vh - 72px)
+}
+
+.admin-booking-detail-v3 * {
+    box-sizing: border-box
+}
+
+.admin-booking-detail-v3 .db-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #4D78BE;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 14px;
+    transition: gap .2s, color .2s
+}
+
+.admin-booking-detail-v3 .db-back:hover {
+    gap: 13px;
+    color: var(--db-primary)
+}
+
+.admin-booking-detail-v3 .db-heading {
+    margin: 0 0 24px
+}
+
+.admin-booking-detail-v3 .db-heading h2 {
+    font: 400 42px/1.1 'DM Serif Display', Georgia, serif;
+    color: var(--db-navy);
+    margin: 0 0 8px
+}
+
+.admin-booking-detail-v3 .db-heading p {
+    font-size: 14px;
+    color: #6480B2;
+    margin: 0
+}
+
+.admin-booking-detail-v3 .db-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(280px, .9fr);
+    gap: 18px;
+    align-items: start
+}
+
+.admin-booking-detail-v3 .db-main-column, .admin-booking-detail-v3 .db-side-column {
+    display: grid;
+    gap: 18px;
+    min-width: 0
+}
+
+.admin-booking-detail-v3 .db-panel {
+    background: rgba(255, 255, 255, .88);
+    border: 1px solid var(--db-border);
+    border-radius: 13px;
+    box-shadow: 0 5px 18px rgba(16, 42, 86, .025);
+    overflow: hidden
+}
+
+.admin-booking-detail-v3 .db-summary {
+    display: grid;
+    grid-template-columns: 1fr .8fr 1fr;
+    padding: 24px 22px;
+    gap: 20px
+}
+
+.admin-booking-detail-v3 .db-summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0
+}
+
+.admin-booking-detail-v3 .db-summary-item+.db-summary-item {
+    border-left: 1px solid #E4ECF9;
+    padding-left: 22px
+}
+
+.admin-booking-detail-v3 .db-eyebrow {
+    font-size: 12px;
+    color: var(--db-muted)
+}
+
+.admin-booking-detail-v3 .db-code {
+    font: 400 26px/1.2 'DM Serif Display', Georgia, serif
+}
+
+.admin-booking-detail-v3 .db-summary-date {
+    font-size: 13px;
+    font-weight: 500;
+    padding-top: 3px
+}
+
+.admin-booking-detail-v3 .db-status {
+    display: inline-flex;
+    align-self: flex-start;
+    border-radius: 30px;
+    padding: 6px 12px;
+    background: #E8F8F1;
+    color: #087C57;
+    font-size: 12px;
+    font-weight: 700
+}
+
+.admin-booking-detail-v3 .db-status-menunggu {
+    background: #E8F1FF;
+    color: #155EEF
+}
+
+.admin-booking-detail-v3 .db-status-ditolak, .admin-booking-detail-v3 .db-status-dibatalkan {
+    background: #FFF0F1;
+    color: #D92D3A
+}
+
+.admin-booking-detail-v3 .db-status-selesai {
+    background: #EEF0FF;
+    color: #5156C9
+}
+
+.admin-booking-detail-v3 .db-info-panel {
+    padding: 0 22px
+}
+
+.admin-booking-detail-v3 .db-info-section {
+    padding: 22px 0;
+    border-bottom: 1px solid #E4ECF9
+}
+
+.admin-booking-detail-v3 .db-info-section:last-child {
+    border-bottom: 0
+}
+
+.admin-booking-detail-v3 h3 {
+    font: 700 15px 'DM Serif Display', Georgia, serif;
+    color: var(--db-navy);
+    margin: 0 0 17px
+}
+
+.admin-booking-detail-v3 .db-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--db-primary);
+    font: 600 20px 'DM Sans', sans-serif;
+    width: 25px;
+    margin-right: 9px
+}
+
+.admin-booking-detail-v3 .db-detail-list, .admin-booking-detail-v3 .db-payment-list {
+    display: grid;
+    gap: 13px;
+    margin: 0;
+    padding-left: 36px
+}
+
+.admin-booking-detail-v3 .db-detail-list>div, .admin-booking-detail-v3 .db-payment-list>div {
+    display: grid;
+    grid-template-columns: minmax(120px, .55fr) minmax(0, 1fr);
+    gap: 12px;
+    font-size: 12px;
+    line-height: 1.5
+}
+
+.admin-booking-detail-v3 dt {
+    color: var(--db-muted)
+}
+
+.admin-booking-detail-v3 dd {
+    margin: 0;
+    color: #31558D;
+    font-weight: 500;
+    overflow-wrap: anywhere
+}
+
+.admin-booking-detail-v3 .db-note-box {
+    margin-left: 36px;
+    background: #F4F7FD;
+    border-radius: 8px;
+    padding: 13px 14px;
+    color: #6480B2;
+    font-size: 12px;
+    line-height: 1.65;
+    min-height: 42px
+}
+
+.admin-booking-detail-v3 .db-history-panel {
+    padding: 22px
+}
+
+.admin-booking-detail-v3 .db-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    position: relative;
+    padding-top: 8px;
+    gap: 0
+}
+
+.admin-booking-detail-v3 .db-timeline:before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 7%;
+    right: 7%;
+    height: 2px;
+    background: #DCE5F4
+}
+
+.admin-booking-detail-v3 .db-timeline-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 8px;
+    font-size: 12px;
+    color: #6882B1
+}
+
+.admin-booking-detail-v3 .db-timeline-step i {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #B6C5DF;
+    z-index: 1;
+    border: 2px solid #fff
+}
+
+.admin-booking-detail-v3 .db-timeline-step.is-current i, .admin-booking-detail-v3 .db-timeline-step.is-done i {
+    background: var(--db-green)
+}
+
+.admin-booking-detail-v3 .db-timeline-step small {
+    font-size: 10px;
+    color: #7790B9
+}
+
+.admin-booking-detail-v3 .db-history-note {
+    margin: 15px 0 0 8px;
+    font-size: 10px;
+    color: #8A9BBB
+}
+
+.admin-booking-detail-v3 .db-court-panel {
+    padding: 18px
+}
+
+.admin-booking-detail-v3 .db-court-art {
+    height: 160px;
+    border-radius: 9px;
+    background: linear-gradient(145deg, #E9F1FF, #D5E5FF);
+    display: grid;
+    place-items: center;
+    color: var(--db-primary);
+    font-size: 52px;
+    margin-bottom: 14px
+}
+
+.admin-booking-detail-v3 .db-court-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap
+}
+
+.admin-booking-detail-v3 .db-court-title h3 {
+    font-size: 16px;
+    margin: 0
+}
+
+.admin-booking-detail-v3 .db-court-title span {
+    font-size: 11px;
+    background: #E8F1FF;
+    color: var(--db-primary);
+    padding: 4px 9px;
+    border-radius: 20px
+}
+
+.admin-booking-detail-v3 .db-location {
+    font-size: 12px;
+    color: #6480B2;
+    margin: 12px 0
+}
+
+.admin-booking-detail-v3 .db-court-description {
+    font-size: 12px;
+    line-height: 1.7;
+    color: #6480B2;
+    margin: 0
+}
+
+.admin-booking-detail-v3 .db-payment-panel {
+    padding: 20px
+}
+
+.admin-booking-detail-v3 .db-payment-list {
+    padding: 0;
+    gap: 14px
+}
+
+.admin-booking-detail-v3 .db-payment-list>div {
+    grid-template-columns: 1fr auto
+}
+
+.admin-booking-detail-v3 .db-payment-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #EEF4FF;
+    color: #5275B9;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 11px;
+    margin-top: 18px
+}
+
+.admin-booking-detail-v3 .db-payment-notice span {
+    display: grid;
+    place-items: center;
+    background: #6B63F6;
+    color: white;
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    font-weight: 700
+}
+
+@media(max-width:1050px) {
+    .admin-booking-detail-v3 .db-layout {
+        grid-template-columns: 1fr
+    }
+
+    .admin-booking-detail-v3 .db-side-column {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+}
+
+@media(max-width:700px) {
+    .admin-booking-detail-v3 {
+        padding: 20px 14px 30px
+    }
+
+    .admin-booking-detail-v3 .db-heading h2 {
+        font-size: 34px
+    }
+
+    .admin-booking-detail-v3 .db-summary {
+        grid-template-columns: 1fr;
+        gap: 14px
+    }
+
+    .admin-booking-detail-v3 .db-summary-item+.db-summary-item {
+        border-left: 0;
+        border-top: 1px solid #E4ECF9;
+        padding: 14px 0 0
+    }
+
+    .admin-booking-detail-v3 .db-side-column {
+        grid-template-columns: 1fr
+    }
+
+    .admin-booking-detail-v3 .db-detail-list {
+        padding-left: 0
+    }
+
+    .admin-booking-detail-v3 .db-detail-list>div {
+        grid-template-columns: 1fr;
+        gap: 3px
+    }
+
+    .admin-booking-detail-v3 .db-note-box {
+        margin-left: 0
+    }
+
+    .admin-booking-detail-v3 .db-timeline-step {
+        padding: 0 3px
+    }
+
+    .admin-booking-detail-v3 .db-timeline-step span {
+        font-size: 10px
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .admin-booking-detail-v3 .db-back {
+        transition: none
+    }
+}
+
+/* Status actions (payment panel removed) */
+.db-actions-panel {
+    padding: 24px;
+}
+
+.db-actions-panel h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    color: var(--db-navy, #102A56);
+    font-family: "DM Serif Display", serif;
+    font-size: 19px;
+}
+
+.db-actions-description {
+    color: var(--db-muted, #6680A8);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+}
+
+.db-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.db-actions-panel form {
+    margin: 0;
+}
+
+.db-action-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font: 600 14px "DM Sans", sans-serif;
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.db-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(21, 94, 239, .14);
+}
+
+.db-action-confirm {
+    background: #12A879;
+    color: #fff;
+}
+
+.db-action-reject {
+    background: #fff;
+    color: #E5485D;
+    border-color: #F2A5AE;
+}
+
+.db-action-finish {
+    background: #155EEF;
+    color: #fff;
+}
+
+.db-action-locked {
+    padding: 13px 14px;
+    border-radius: 10px;
+    background: #F2F6FC;
+    color: #6680A8;
+    font-size: 13px;
+}
+
+@media(max-width:760px) {
+    .db-action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Modal catatan kerusakan saat admin menyelesaikan booking */
+.db-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(16, 42, 86, .42);
+    backdrop-filter: blur(4px);
+}
+
+.db-modal-backdrop.is-open {
+    display: flex;
+}
+
+.db-damage-modal {
+    position: relative;
+    width: min(100%, 520px);
+    padding: 28px;
+    border: 1px solid #DCE3EE;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(16, 42, 86, .2);
+    animation: dbModalIn .2s ease-out;
+    color: #102A56;
+}
+
+.db-damage-modal h3 {
+    margin: 0 36px 8px 0;
+    color: #102A56;
+    font-family: "DM Serif Display", Georgia, serif;
+    font-size: 25px;
+}
+
+.db-damage-modal p {
+    margin: 0 0 20px;
+    color: #63799F;
+    font: 14px/1.6 "DM Sans", sans-serif;
+}
+
+.db-damage-modal label {
+    display: block;
+    margin-bottom: 8px;
+    color: #526B92;
+    font: 600 13px "DM Sans", sans-serif;
+}
+
+.db-damage-modal textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: vertical;
+    min-height: 110px;
+    padding: 13px 14px;
+    border: 1px solid #DCE3EE;
+    border-radius: 10px;
+    background: #F5F8FF;
+    color: #102A56;
+    font: 14px/1.5 "DM Sans", sans-serif;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.db-damage-modal textarea:focus {
+    border-color: #155EEF;
+    box-shadow: 0 0 0 3px rgba(21, 94, 239, .12);
+}
+
+.db-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 18px;
+    border: 0;
+    background: transparent;
+    color: #63799F;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.db-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.db-modal-cancel {
+    padding: 11px 18px;
+    border: 1px solid #DCE3EE;
+    border-radius: 9px;
+    background: #fff;
+    color: #526B92;
+    font: 600 14px "DM Sans", sans-serif;
+    cursor: pointer;
+}
+
+.db-modal-actions .db-action-btn {
+    width: auto;
+    padding: 11px 18px;
+}
+
+body.db-modal-open {
+    overflow: hidden;
+}
+
+@keyframes dbModalIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 560px) {
+    .db-damage-modal {
+        padding: 22px 18px;
+    }
+
+    .db-modal-actions {
+        flex-direction: column-reverse;
+    }
+
+    .db-modal-actions button {
+        width: 100% !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .db-damage-modal {
+        animation: none;
+    }
+}

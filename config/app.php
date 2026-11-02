@@ -1,4 +1,7 @@
 <?php
+// Gunakan WIB untuk seluruh tanggal dan waktu aplikasi.
+date_default_timezone_set('Asia/Jakarta');
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -52,7 +55,11 @@ function show_flash() {
     if (!empty($_SESSION['flash'])) {
         $flash = $_SESSION['flash'];
         unset($_SESSION['flash']);
-        echo '<div class="alert alert-' . e($flash['type']) . '">' . e($flash['message']) . '</div>';
+        $type = strtolower((string)($flash['type'] ?? 'success'));
+        if ($type === 'danger') $type = 'error';
+        $allowed = ['success', 'error', 'warning', 'info', 'question'];
+        if (!in_array($type, $allowed, true)) $type = 'info';
+        echo '<div id="app-flash-message" hidden data-type="' . e($type) . '" data-message="' . e($flash['message'] ?? '') . '"></div>';
     }
 }
 

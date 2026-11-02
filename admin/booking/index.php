@@ -114,333 +114,113 @@ mysqli_stmt_execute($stmt);
 $result = mysqli_stmt_get_result($stmt);
 
 
-require_once __DIR__ . "/../../includes/header.php";
 
-?>
-
-    <?php require __DIR__ . "/../../includes/navbar.php"; ?>
-
-    <?php require __DIR__ . "/../../includes/sidebar.php"; ?>
-
-
-    <main class="content booking-management-page">
-
-        <?php show_flash(); ?>
-
-
-        <div class="page-heading">
-
-            <div>
-
-                <h2>Kelola Booking</h2>
-
-                <p>
-                    Kelola konfirmasi dan status booking lapangan.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="table-card">
-
-
-            <!-- FILTER -->
-
-            <div class="table-header">
-
-                <form
-                    method="GET"
-                    class="filters">
-
-                    <input
-                        type="text"
-                        name="search"
-                        placeholder="Cari kode, pengguna, lapangan..."
-                        value="<?= e($search) ?>">
-
-
-                    <select name="status">
-
-                        <option value="">
-                            Semua Status
-                        </option>
-
-                        <option
-                            value="menunggu"
-                            <?= $status === 'menunggu' ? 'selected' : '' ?>>
-                            Menunggu
-                        </option>
-
-                        <option
-                            value="dikonfirmasi"
-                            <?= $status === 'dikonfirmasi' ? 'selected' : '' ?>>
-                            Dikonfirmasi
-                        </option>
-
-                        <option
-                            value="ditolak"
-                            <?= $status === 'ditolak' ? 'selected' : '' ?>>
-                            Ditolak
-                        </option>
-
-                        <option
-                            value="selesai"
-                            <?= $status === 'selesai' ? 'selected' : '' ?>>
-                            Selesai
-                        </option>
-
-                    </select>
-
-
-                    <input
-                        type="date"
-                        name="tanggal"
-                        value="<?= e($tanggal) ?>">
-
-
-                    <button
-                        class="btn btn-secondary"
-                        type="submit">
-                        Filter
-                    </button>
-
-                </form>
-
-            </div>
-
-
-            <!-- TABLE -->
-
-            <div class="table-wrap">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>No</th>
-                            <th>Kode</th>
-                            <th>Pemesan</th>
-                            <th>Lapangan</th>
-                            <th>Tanggal</th>
-                            <th>Jam</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        <?php $no = 1; ?>
-
-
-                        <?php while ($row = mysqli_fetch_assoc($result)): ?>
-
-                            <tr>
-
-                                <td>
-                                    <?= $no++ ?>
-                                </td>
-
-
-                                <td>
-
-                                    <strong>
-                                        <?= e($row['kode_booking']) ?>
-                                    </strong>
-
-                                </td>
-
-
-                                <td>
-
-                                    <?= e($row['nama_user']) ?>
-
-                                    <br>
-
-                                    <small>
-                                        <?= e($row['email_user']) ?>
-                                    </small>
-
-                                </td>
-
-
-                                <td>
-
-                                    <?= e($row['nama_lapangan']) ?>
-
-                                </td>
-
-
-                                <td>
-
-                                    <?= date(
-                                        'd-m-Y',
-                                        strtotime($row['tanggal'])
-                                    ) ?>
-
-                                </td>
-
-
-                                <td>
-
-                                    <?= e($row['jam_mulai']) ?>
-
-                                    -
-
-                                    <?= e($row['jam_selesai']) ?>
-
-                                </td>
-
-
-                                <td>
-
-                                    <span class="booking-status status-<?= e($row['booking_status']) ?>">
-
-                                        <?= e(
-                                            ucfirst(
-                                                $row['booking_status']
-                                            )
-                                        ) ?>
-
-                                    </span>
-
-                                </td>
-
-
-                                <td>
-
-                                    <div class="actions">
-
-                                        <a
-                                            class="btn btn-secondary"
-                                            href="detail.php?id=<?= $row['id'] ?>">
-                                            Detail
-                                        </a>
-
-
-                                        <?php if ($row['booking_status'] === 'menunggu'): ?>
-
-                                            <form
-                                                method="POST"
-                                                action="update_status.php"
-                                                style="display:inline;">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="<?= $row['id'] ?>">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="status"
-                                                    value="dikonfirmasi">
-
-                                                <button
-                                                    class="btn btn-primary"
-                                                    type="submit"
-                                                    onclick="return confirm('Konfirmasi booking ini?')">
-                                                    Konfirmasi
-                                                </button>
-
-                                            </form>
-
-
-                                            <form
-                                                method="POST"
-                                                action="update_status.php"
-                                                style="display:inline;">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="<?= $row['id'] ?>">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="status"
-                                                    value="ditolak">
-
-                                                <button
-                                                    class="btn btn-secondary"
-                                                    type="submit"
-                                                    onclick="return confirm('Tolak booking ini?')">
-                                                    Tolak
-                                                </button>
-
-                                            </form>
-
-                                        <?php elseif ($row['booking_status'] === 'dikonfirmasi'): ?>
-
-                                            <form
-                                                method="POST"
-                                                action="update_status.php">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="id"
-                                                    value="<?= $row['id'] ?>">
-
-                                                <input
-                                                    type="hidden"
-                                                    name="status"
-                                                    value="selesai">
-
-                                                <button
-                                                    class="btn btn-primary"
-                                                    type="submit"
-                                                    onclick="return confirm('Tandai booking sebagai selesai?')">
-                                                    Selesai
-                                                </button>
-
-                                            </form>
-
-                                        <?php endif; ?>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-
-                        <?php endwhile; ?>
-
-
-                        <?php if (mysqli_num_rows($result) === 0): ?>
-
-                            <tr>
-
-                                <td
-                                    colspan="8"
-                                    class="empty">
-                                    Belum ada data booking.
-                                </td>
-
-                            </tr>
-
-                        <?php endif; ?>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    </main>
-
-
-<?php
-
+$bookings = [];
+while ($item = mysqli_fetch_assoc($result)) {
+    $bookings[] = $item;
+}
 mysqli_stmt_close($stmt);
 
-require_once __DIR__ . "/../../includes/footer.php";
-
+$counts = ['total' => count($bookings), 'menunggu' => 0, 'dikonfirmasi' => 0, 'ditolak' => 0, 'selesai' => 0, 'dibatalkan' => 0];
+foreach ($bookings as $item) {
+    if (isset($counts[$item['booking_status']])) $counts[$item['booking_status']]++;
+}
+require_once __DIR__ . "/../../includes/header.php";
 ?>
+
+<?php require __DIR__ . "/../../includes/navbar.php"; ?>
+<?php require __DIR__ . "/../../includes/sidebar.php"; ?>
+<link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/admin-booking.css">
+
+<main class="content booking-management-page admin-booking-v2">
+    <?php show_flash(); ?>
+    <div class="booking-page-heading">
+        <a class="booking-back" href="../dashboard.php">← Kembali</a>
+        <div>
+            <h1>Data Booking</h1>
+            <p>Kelola semua data pemesanan lapangan dari pengguna.</p>
+        </div>
+    </div>
+
+    <section class="booking-filters-panel">
+        <form method="GET" class="booking-filter-form">
+            <label class="booking-search"><span>⌕</span><input name="search" value="<?= e($search) ?>" placeholder="Cari kode booking, nama pemesan, atau lapangan..."></label>
+            <select name="status" aria-label="Filter status">
+                <option value="">Semua Status</option>
+                <?php foreach (['menunggu' => 'Menunggu', 'dikonfirmasi' => 'Dikonfirmasi', 'ditolak' => 'Ditolak', 'selesai' => 'Selesai'] as $key => $label): ?>
+                    <option value="<?= e($key) ?>" <?= $status === $key ? 'selected' : '' ?>><?= e($label) ?></option>
+                <?php endforeach; ?>
+            </select>
+            <label class="booking-date"><span>Tanggal</span><input type="date" name="tanggal" value="<?= e($tanggal) ?>"></label>
+            <button class="booking-btn booking-btn-primary" type="submit">Tampilkan</button>
+        </form>
+    </section>
+
+    <section class="booking-stats">
+        <div class="booking-stat"><span class="stat-icon">▣</span>
+            <div><small>Total Booking</small><strong><?= $counts['total'] ?></strong></div>
+        </div>
+        <div class="booking-stat stat-pending"><span class="stat-icon">⌛</span>
+            <div><small>Menunggu</small><strong><?= $counts['menunggu'] ?></strong></div>
+        </div>
+        <div class="booking-stat stat-confirmed"><span class="stat-icon">✓</span>
+            <div><small>Dikonfirmasi</small><strong><?= $counts['dikonfirmasi'] ?></strong></div>
+        </div>
+        <div class="booking-stat stat-rejected"><span class="stat-icon">×</span>
+            <div><small>Ditolak</small><strong><?= $counts['ditolak'] ?></strong></div>
+        </div>
+        <div class="booking-stat stat-completed"><span class="stat-icon">✓</span>
+            <div><small>Selesai</small><strong><?= $counts['selesai'] ?></strong></div>
+        </div>
+    </section>
+
+    <div class="booking-content-layout">
+        <section class="booking-card-list">
+            <?php if (!$bookings): ?>
+                <div class="booking-empty">Belum ada data booking yang sesuai filter.</div>
+                <?php else: foreach ($bookings as $row): ?>
+                    <article class="booking-record">
+                        <a class="booking-record-main" href="detail.php?id=<?= (int)$row['id'] ?>">
+                            <div class="booking-record-avatar">▦</div>
+                            <div class="booking-record-info">
+                                <div class="booking-record-title"><strong><?= e($row['kode_booking']) ?></strong><span class="booking-badge badge-<?= e($row['booking_status']) ?>"><?= e(ucfirst($row['booking_status'])) ?></span></div>
+                                <div class="booking-person"><?= e($row['nama_user']) ?></div>
+                                <div class="booking-meta"><span>⌂ <?= e($row['nama_lapangan']) ?></span><span>▦ <?= date('d M Y', strtotime($row['tanggal'])) ?> · <?= e(substr($row['jam_mulai'], 0, 5)) ?>–<?= e(substr($row['jam_selesai'], 0, 5)) ?></span></div>
+                                <small class="booking-created">Dipesan <?= date('d M Y, H:i', strtotime($row['tanggal_booking'])) ?></small>
+                            </div>
+                        </a>
+                        <a class="booking-more" href="detail.php?id=<?= (int)$row['id'] ?>" aria-label="Detail booking <?= e($row['kode_booking']) ?>">•••</a>
+                    </article>
+            <?php endforeach;
+            endif; ?>
+            <div class="booking-list-footer">Menampilkan <?= count($bookings) ?> data booking</div>
+        </section>
+
+    </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.querySelectorAll('.js-status-form').forEach(form => form.addEventListener('submit', event => {
+        event.preventDefault();
+        const status = form.dataset.status;
+        const configs = {
+            dikonfirmasi: ['Konfirmasi booking?', 'Booking ini akan disetujui.'],
+            ditolak: ['Tolak booking?', 'Booking akan ditolak dan riwayatnya tetap disimpan.'],
+            selesai: ['Selesaikan booking?', 'Pastikan penggunaan lapangan sudah selesai.']
+        };
+        Swal.fire({
+            title: configs[status][0],
+            text: configs[status][1],
+            icon: 'question',
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Lanjutkan',
+            confirmButtonColor: '#155EEF',
+            cancelButtonColor: '#667085',
+            reverseButtons: true
+        }).then(result => {
+            if (result.isConfirmed) form.submit();
+        });
+    }));
+</script>
+<?php require_once __DIR__ . "/../../includes/footer.php"; ?>

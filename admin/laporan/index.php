@@ -35,7 +35,7 @@ if ($court_id > 0) {
     $params[] = $court_id;
 }
 $where = implode(' AND ', $conditions);
-$sql = "SELECT b.kode_booking,b.status,u.name AS nama_pemesan,j.tanggal,j.jam_mulai,j.jam_selesai,l.nama AS nama_lapangan FROM bookings b JOIN users u ON u.id=b.user_id JOIN jadwal j ON j.id=b.jadwal_id JOIN lapangan l ON l.id=j.lapangan_id WHERE $where ORDER BY j.tanggal DESC,j.jam_mulai DESC";
+$sql = "SELECT b.kode_booking,b.status,b.keterangan_kerusakan,u.name AS nama_pemesan,j.tanggal,j.jam_mulai,j.jam_selesai,l.nama AS nama_lapangan FROM bookings b JOIN users u ON u.id=b.user_id JOIN jadwal j ON j.id=b.jadwal_id JOIN lapangan l ON l.id=j.lapangan_id WHERE $where ORDER BY j.tanggal DESC,j.jam_mulai DESC";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, $types, ...$params);
 mysqli_stmt_execute($stmt);
@@ -157,6 +157,7 @@ require_once __DIR__ . "/../../includes/header.php";
                                 <th>Tanggal</th>
                                 <th>Jam</th>
                                 <th>Status</th>
+                                <th>Keterangan Kerusakan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,9 +169,10 @@ require_once __DIR__ . "/../../includes/header.php";
                                         <td><?= report_e(date('d/m/Y', strtotime($b['tanggal']))) ?></td>
                                         <td><?= report_e(substr($b['jam_mulai'], 0, 5)) ?>–<?= report_e(substr($b['jam_selesai'], 0, 5)) ?></td>
                                         <td><span class="status status-<?= report_e($b['status']) ?>"><?= report_e(ucfirst($b['status'])) ?></span></td>
+                                        <td><?= report_e($b['keterangan_kerusakan'] ?: '—') ?></td>
                                     </tr><?php endforeach;
                                     else: ?><tr>
-                                    <td colspan="7" class="empty-row">Tidak ada data booking untuk filter ini.</td>
+                                    <td colspan="8" class="empty-row">Tidak ada data booking untuk filter ini.</td>
                                 </tr><?php endif; ?>
                         </tbody>
                     </table>
