@@ -44,7 +44,7 @@ $sql = "
     INNER JOIN lapangan l
         ON j.lapangan_id = l.id
 
-    WHERE 1=1
+    WHERE b.status IN ('menunggu', 'dikonfirmasi', 'ditolak')
 ";
 
 
@@ -121,21 +121,22 @@ while ($item = mysqli_fetch_assoc($result)) {
 }
 mysqli_stmt_close($stmt);
 
-$counts = ['total' => count($bookings), 'menunggu' => 0, 'dikonfirmasi' => 0, 'ditolak' => 0, 'selesai' => 0, 'dibatalkan' => 0];
+// Data yang ditampilkan hanya booking menunggu, dikonfirmasi, dan ditolak.
+$counts = ['total' => count($bookings), 'menunggu' => 0, 'dikonfirmasi' => 0, 'ditolak' => 0];
 foreach ($bookings as $item) {
     if (isset($counts[$item['booking_status']])) $counts[$item['booking_status']]++;
 }
 require_once __DIR__ . "/../../includes/header.php";
 ?>
 
-<?php require __DIR__ . "/../../includes/navbar.php"; ?>
 <?php require __DIR__ . "/../../includes/sidebar.php"; ?>
-<link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/admin-booking.css">
+<link rel="stylesheet" href="/../../assets/css/admin-booking.css">
+<?php require __DIR__ . "/../../includes/navbar.php"; ?>
 
 <main class="content booking-management-page admin-booking-v2">
+    
     <?php show_flash(); ?>
     <div class="booking-page-heading">
-        <a class="booking-back" href="../dashboard.php">← Kembali</a>
         <div>
             <h1>Data Booking</h1>
             <p>Kelola semua data pemesanan lapangan dari pengguna.</p>
@@ -147,7 +148,7 @@ require_once __DIR__ . "/../../includes/header.php";
             <label class="booking-search"><span>⌕</span><input name="search" value="<?= e($search) ?>" placeholder="Cari kode booking, nama pemesan, atau lapangan..."></label>
             <select name="status" aria-label="Filter status">
                 <option value="">Semua Status</option>
-                <?php foreach (['menunggu' => 'Menunggu', 'dikonfirmasi' => 'Dikonfirmasi', 'ditolak' => 'Ditolak', 'selesai' => 'Selesai'] as $key => $label): ?>
+                <?php foreach (['menunggu' => 'Menunggu', 'dikonfirmasi' => 'Dikonfirmasi', 'ditolak' => 'Ditolak'] as $key => $label): ?>
                     <option value="<?= e($key) ?>" <?= $status === $key ? 'selected' : '' ?>><?= e($label) ?></option>
                 <?php endforeach; ?>
             </select>
@@ -169,16 +170,15 @@ require_once __DIR__ . "/../../includes/header.php";
         <div class="booking-stat stat-rejected"><span class="stat-icon">×</span>
             <div><small>Ditolak</small><strong><?= $counts['ditolak'] ?></strong></div>
         </div>
-        <div class="booking-stat stat-completed"><span class="stat-icon">✓</span>
-            <div><small>Selesai</small><strong><?= $counts['selesai'] ?></strong></div>
-        </div>
     </section>
 
     <div class="booking-content-layout">
         <section class="booking-card-list">
             <?php if (!$bookings): ?>
                 <div class="booking-empty">Belum ada data booking yang sesuai filter.</div>
-                <?php else: foreach ($bookings as $row): ?>
+            <?php else: ?>
+
+                <?php foreach ($bookings as $row): ?>
                     <article class="booking-record">
                         <a class="booking-record-main" href="detail.php?id=<?= (int)$row['id'] ?>">
                             <div class="booking-record-avatar">▦</div>
@@ -191,12 +191,15 @@ require_once __DIR__ . "/../../includes/header.php";
                         </a>
                         <a class="booking-more" href="detail.php?id=<?= (int)$row['id'] ?>" aria-label="Detail booking <?= e($row['kode_booking']) ?>">•••</a>
                     </article>
-            <?php endforeach;
-            endif; ?>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+
             <div class="booking-list-footer">Menampilkan <?= count($bookings) ?> data booking</div>
         </section>
-
     </div>
+
+
 </main>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>

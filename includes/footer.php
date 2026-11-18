@@ -47,7 +47,7 @@ document.querySelectorAll('.js-delete-jadwal-form').forEach(form => {
     });
   });
 </script>
-<script src="/booking-lapangan-sekolah/assets/js/script.js"></script>
+<script src="/../../assets/js/script.js"></script>
 </body>
 
 </html>

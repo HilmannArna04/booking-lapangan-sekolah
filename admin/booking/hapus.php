@@ -11,14 +11,14 @@ require_admin();
 |--------------------------------------------------------------------------
 */
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirect("/booking-lapangan-sekolah/admin/booking/index.php");
+    redirect("/admin/booking/index.php");
 }
 
 $id = (int) ($_POST['id'] ?? 0);
 
 if ($id <= 0) {
     flash("booking", "ID booking tidak valid.", "error");
-    redirect("/booking-lapangan-sekolah/admin/booking/index.php");
+    redirect("/admin/booking/index.php");
 }
 
 /*
@@ -44,7 +44,7 @@ mysqli_stmt_close($stmt);
 
 if (!$booking) {
     flash("booking", "Data booking tidak ditemukan.", "error");
-    redirect("/booking-lapangan-sekolah/admin/booking/index.php");
+    redirect("/admin/booking/index.php");
 }
 
 /*
@@ -58,7 +58,7 @@ if ($booking['status'] !== 'selesai') {
         "Hanya booking berstatus selesai yang dapat dihapus.",
         "error"
     );
-    redirect("/booking-lapangan-sekolah/admin/booking/index.php");
+    redirect("/admin/booking/index.php");
 }
 
 /*
@@ -91,6 +91,6 @@ if ($success && $affected === 1) {
     flash("booking", "Data booking gagal dihapus. Silakan coba lagi.", "error");
 }
 
-redirect("/booking-lapangan-sekolah/admin/booking/index.php");
+redirect("/admin/booking/index.php");
 
 ?>

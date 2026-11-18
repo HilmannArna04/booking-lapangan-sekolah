@@ -22,19 +22,16 @@ body, button, input, select, textarea {
 }
 
 body {
-    color: var(--color-text);
-    background: #fff
-}
-
-.booking-page-shell {
     background: var(--color-blue-wash);
-    min-height: 100vh
 }
 
 .booking-page {
     box-sizing: border-box;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
     padding: 30px clamp(16px, 3vw, 38px) 40px;
-    color: var(--color-text)
+    color: var(--color-text);
 }
 
 .booking-page .page-heading {
@@ -57,18 +54,20 @@ body {
 }
 
 .booking-page .booking-filter-card {
+    box-sizing: border-box;
+    width: 100%;
     margin-bottom: 20px;
     padding: 16px;
     background: #fff;
     border: 1px solid var(--color-border);
-    border-radius: 14px
+    border-radius: 14px;
 }
 
 .booking-page .booking-filter-form {
     display: flex;
     align-items: center;
     gap: 12px;
-    flex-wrap: wrap
+    width: 100%;
 }
 
 .booking-page .booking-date-control {
@@ -76,7 +75,7 @@ body {
     align-items: center;
     gap: 8px;
     flex: 1;
-    min-width: 240px
+    min-width: 0;
 }
 
 .booking-page .date-arrow {
@@ -102,36 +101,56 @@ body {
 }
 
 .booking-page .date-display {
+    box-sizing: border-box;
     position: relative;
     display: flex;
     align-items: center;
     gap: 11px;
     flex: 1;
+    width: 100%;
     min-width: 0;
     min-height: 42px;
     padding: 0 13px;
     border: 1px solid var(--color-border);
     border-radius: 9px;
     background: #fff;
-    cursor: pointer
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.booking-page .date-display:hover,
+.booking-page .date-display:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(21, 94, 239, 0.12)
 }
 
 .booking-page .date-icon {
-    color: var(--color-primary);
-    font-size: 18px
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--color-primary)
+}
+
+.booking-page .date-display>span:not(.date-icon) {
+    display: block;
+    flex: 1;
+    min-width: 0
 }
 
 .booking-page .date-display strong {
     display: block;
     color: var(--color-navy);
-    font-size: 13px
+    font-size: 13px;
+    line-height: 1.2
 }
 
 .booking-page .date-display small {
     display: block;
     margin-top: 2px;
     color: var(--color-muted);
-    font-size: 11px
+    font-size: 11px;
+    line-height: 1.2
 }
 
 .booking-page .date-display input[type=date] {
@@ -139,8 +158,28 @@ body {
     inset: 0;
     width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2
+}
+
+.booking-page .date-display input[type=date]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
     opacity: 0;
     cursor: pointer
+}
+
+.booking-page .booking-search-btn {
+    flex-shrink: 0;
+    white-space: nowrap
 }
 
 .booking-page .btn, .booking-page button.btn {

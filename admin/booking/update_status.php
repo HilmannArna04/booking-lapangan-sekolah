@@ -9,7 +9,7 @@ require_admin();
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -38,7 +38,7 @@ if (
     );
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -81,7 +81,7 @@ if (!$booking) {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -107,7 +107,7 @@ if (
     );
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -124,7 +124,7 @@ if (
     );
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -141,7 +141,7 @@ if (
     );
 
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -245,5 +245,5 @@ if (mysqli_stmt_execute($stmt)) {
 
 
 redirect(
-    "/booking-lapangan-sekolah/admin/booking/index.php"
+    "/admin/booking/index.php"
 );

@@ -1,4 +1,8 @@
 <?php
+// Sembunyikan error di production
+ini_set('display_errors', 0);
+error_reporting(0);
+
 // Gunakan WIB untuk seluruh tanggal dan waktu aplikasi.
 date_default_timezone_set('Asia/Jakarta');
 
@@ -6,26 +10,41 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-function e($value) {
+// =====================================================
+// BASE URL — sesuaikan jika subfolder berbeda
+// =====================================================
+define('BASE_URL', '/booking-lapangan-sekolah');
+
+function e($value)
+{
     return htmlspecialchars((string)$value, ENT_QUOTES, 'UTF-8');
 }
 
-function redirect($url) {
+function redirect($url)
+{
     header("Location: " . $url);
     exit;
 }
 
-function is_logged_in() {
+function base_url($path = '')
+{
+    return BASE_URL . '/' . ltrim($path, '/');
+}
+
+function is_logged_in()
+{
     return isset($_SESSION['user_id']);
 }
 
-function require_login() {
+function require_login()
+{
     if (!is_logged_in()) {
-        redirect("/booking-lapangan-sekolah/login.php");
+        redirect(base_url('login.php'));
     }
 }
 
-function require_admin() {
+function require_admin()
+{
     require_login();
 
     if ($_SESSION['role'] !== 'admin') {
@@ -34,7 +53,8 @@ function require_admin() {
     }
 }
 
-function require_user() {
+function require_user()
+{
     require_login();
 
     if ($_SESSION['role'] !== 'user') {
@@ -43,7 +63,8 @@ function require_user() {
     }
 }
 
-function flash($key, $message, $type = "success") {
+function flash($key, $message, $type = "success")
+{
     $_SESSION['flash'] = [
         'key' => $key,
         'message' => $message,
@@ -51,7 +72,8 @@ function flash($key, $message, $type = "success") {
     ];
 }
 
-function show_flash() {
+function show_flash()
+{
     if (!empty($_SESSION['flash'])) {
         $flash = $_SESSION['flash'];
         unset($_SESSION['flash']);
@@ -63,11 +85,13 @@ function show_flash() {
     }
 }
 
-function old($key, $default = '') {
+function old($key, $default = '')
+{
     return $_POST[$key] ?? $default;
 }
 
-function log_activity($conn, $user_id, $aktivitas, $deskripsi = null) {
+function log_activity($conn, $user_id, $aktivitas, $deskripsi = null)
+{
     $stmt = mysqli_prepare(
         $conn,
         "INSERT INTO activity_logs (user_id, aktivitas, deskripsi) VALUES (?, ?, ?)"

@@ -56,7 +56,7 @@ require_once __DIR__ . "/../../includes/header.php";
 
 <div class="main">
 
-    <?php require __DIR__ . "/../navbar.php"; ?>
+    <?php require __DIR__ . "/../../includes/sidebar.php"; ?>
 
     <main class="content">
 

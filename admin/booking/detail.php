@@ -10,7 +10,7 @@ $id = (int)($_GET['id'] ?? 0);
 
 if ($id <= 0) {
     redirect(
-        "/booking-lapangan-sekolah/admin/booking/index.php"
+        "/admin/booking/index.php"
     );
 }
 
@@ -78,7 +78,7 @@ if (!$booking) {
 $page_title = "Detail Booking";
 require_once __DIR__ . "/../../includes/header.php";
 ?>
-<link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/admin-booking-detail.css">
+<link rel="stylesheet" href="/../../assets/css/admin-booking-detail.css">
 <div class="main">
     <?php require __DIR__ . "/../../includes/navbar.php"; ?>
     <?php require __DIR__ . "/../../includes/sidebar.php"; ?>

@@ -3,9 +3,9 @@ require_once __DIR__ . "/config/app.php";
 
 if (is_logged_in()) {
     if (($_SESSION['role'] ?? '') === 'admin') {
-        redirect("/booking-lapangan-sekolah/admin/index.php");
+        redirect("/admin/index.php");
     }
-    redirect("/booking-lapangan-sekolah/profile.php");
+    redirect("/profile.php");
 }
 ?>
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ if (is_logged_in()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Booking Lapangan Sekolah</title>
-    <link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">

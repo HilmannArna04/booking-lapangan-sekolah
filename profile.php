@@ -53,6 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $error = "Nama wajib diisi.";
 
+    } elseif ($phone !== "" && (!preg_match('/^[0-9]+$/', $phone) || strlen($phone) < 10 || strlen($phone) > 13)) {
+
+        $error = "Nomor telepon tidak valid. Masukkan 10–13 digit angka.";
     } else {
 
         $stmt = mysqli_prepare(
@@ -75,8 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_stmt_close($stmt);
 
 
-        // Update nama di session
+        // Update nama & phone di session
         $_SESSION['name'] = $name;
+        $_SESSION['phone'] = $phone;
 
 
         flash(
@@ -86,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         redirect(
-            "/booking-lapangan-sekolah/profile.php"
+            "/profile.php"
         );
     }
 }
@@ -114,13 +118,13 @@ require_once __DIR__ . "/includes/header.php";
     <?php if ($_SESSION['role'] === 'admin'): ?>
 
         <?php
-        require __DIR__ . "/includes/navbar.php";
+        require __DIR__ . "/includes/sidebar.php";
         ?>
 
     <?php else: ?>
 
         <?php
-        require __DIR__ . "/user/navbar.php";
+        require __DIR__ . "/includes/sidebar.php";
         ?>
 
     <?php endif; ?>
@@ -130,11 +134,10 @@ require_once __DIR__ . "/includes/header.php";
          CONTENT
     ====================================================== -->
 
-    <main class="content">
+    <main class="content profile-page">
 
 
         <?php show_flash(); ?>
-
 
         <!-- PAGE HEADING -->
 
@@ -169,9 +172,15 @@ require_once __DIR__ . "/includes/header.php";
         <!-- PROFILE CARD -->
 
         <div class="form-card profile-card">
+            <div class="profile-card-heading">
+                <span class="profile-avatar">
+                    <?= e(strtoupper(substr($user['name'], 0, 1))) ?>
+                </span>
+                <h3>Informasi Akun</h3>
+            </div>
 
 
-            <form method="POST">
+            <form method="POST" class="profile-form">
 
 
                 <!-- NAMA -->
@@ -188,8 +197,7 @@ require_once __DIR__ . "/includes/header.php";
                         type="text"
                         name="name"
                         required
-                        value="<?= e($user['name']) ?>"
-                    >
+                        value="<?= e($user['name']) ?>">
 
                 </div>
 
@@ -207,8 +215,7 @@ require_once __DIR__ . "/includes/header.php";
                         class="form-control"
                         type="email"
                         value="<?= e($user['email']) ?>"
-                        disabled
-                    >
+                        disabled>
 
                     <small>
                         Email tidak dapat diubah.
@@ -230,8 +237,13 @@ require_once __DIR__ . "/includes/header.php";
                         class="form-control"
                         type="text"
                         name="phone"
-                        value="<?= e($user['phone'] ?? '') ?>"
-                    >
+                        pattern="[0-9]{10,13}"
+                        minlength="10"
+                        maxlength="13"
+                        placeholder="Contoh: 08123456789"
+                        value="<?= e($user['phone'] ?? '') ?>">
+
+                    <small>Masukkan 10–13 digit angka. Contoh: 08123456789</small>
 
                 </div>
 
@@ -249,28 +261,19 @@ require_once __DIR__ . "/includes/header.php";
                         class="form-control"
                         type="text"
                         value="<?= e(ucfirst($user['role'])) ?>"
-                        disabled
-                    >
+                        disabled>
 
                 </div>
 
 
                 <!-- STATUS -->
-
                 <div class="form-group">
+                    <label>Status Akun</label>
 
-                    <label for="status">
-                        Status Akun
-                    </label>
-
-                    <input
-                        id="status"
-                        class="form-control"
-                        type="text"
-                        value="<?= e(ucfirst($user['status'])) ?>"
-                        disabled
-                    >
-
+                    <span class="profile-status <?= strtolower($user['status']) === 'aktif' ? 'status-active' : 'status-inactive' ?>">
+                        <span class="profile-status-dot"></span>
+                        <?= e(ucfirst($user['status'])) ?>
+                    </span>
                 </div>
 
 
@@ -281,8 +284,7 @@ require_once __DIR__ . "/includes/header.php";
 
                     <button
                         class="btn btn-primary"
-                        type="submit"
-                    >
+                        type="submit">
                         Simpan Perubahan
                     </button>
 
@@ -291,8 +293,7 @@ require_once __DIR__ . "/includes/header.php";
 
                         <a
                             class="btn btn-secondary"
-                            href="/booking-lapangan-sekolah/admin/index.php"
-                        >
+                            href="/admin/index.php">
                             Kembali
                         </a>
 
@@ -300,8 +301,7 @@ require_once __DIR__ . "/includes/header.php";
 
                         <a
                             class="btn btn-secondary"
-                            href="/booking-lapangan-sekolah/user/index.php"
-                        >
+                            href="/user/index.php">
                             Kembali
                         </a>
 

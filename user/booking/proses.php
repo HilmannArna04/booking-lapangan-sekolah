@@ -13,7 +13,7 @@ require_user();
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }
 
@@ -36,12 +36,12 @@ $catatan = trim($_POST['catatan'] ?? '');
 
 if ($kelas === '' || $keperluan === '') {
     flash("booking", "Kelas/kelompok dan keperluan wajib diisi.", "error");
-    redirect("/booking-lapangan-sekolah/user/booking/");
+    redirect("/user/booking/");
 }
 
 if (strlen($kelas) > 50 || strlen($keperluan) > 255 || strlen($catatan) > 2000) {
     flash("booking", "Data terlalu panjang. Periksa kembali isian formulir.", "error");
-    redirect("/booking-lapangan-sekolah/user/booking/");
+    redirect("/user/booking/");
 }
 
 if ($jadwal_id <= 0) {
@@ -53,7 +53,7 @@ if ($jadwal_id <= 0) {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }
 
@@ -112,7 +112,7 @@ if (!$jadwal) {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }
 
@@ -156,7 +156,7 @@ if ($total_booking_harian >= 3) {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/?tanggal=" .
+        "/user/booking/?tanggal=" .
         urlencode($booking_date)
     );
 }
@@ -174,7 +174,7 @@ if ($jadwal['status'] !== 'tersedia') {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }
 
@@ -228,7 +228,7 @@ if ($sudah_booking) {
     );
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }
 
@@ -397,7 +397,7 @@ try {
 
 
     redirect(
-        "/booking-lapangan-sekolah/user/jadwal/"
+        "/user/jadwal/"
     );
 } catch (Throwable $e) {
 
@@ -419,6 +419,6 @@ try {
 
 
     redirect(
-        "/booking-lapangan-sekolah/user/booking/"
+        "/user/booking/index.php"
     );
 }

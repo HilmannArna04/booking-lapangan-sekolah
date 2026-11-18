@@ -14,10 +14,10 @@ if (is_logged_in()) {
 
     if ($_SESSION['role'] === 'admin') {
 
-        redirect("/booking-lapangan-sekolah/admin/index.php");
+        redirect("/admin/index.php");
     } else {
 
-        redirect("/booking-lapangan-sekolah/user/index.php");
+        redirect("/user/index.php");
     }
 }
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt = mysqli_prepare(
             $conn,
-            "SELECT id, name, email, password, role, status
+            "SELECT id, name, email, password, role, status, phone
              FROM users
              WHERE email = ?
              LIMIT 1"
@@ -114,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['name'] = $user['name'];
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
+            $_SESSION['phone'] = $user['phone'];
 
 
             /*
@@ -132,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 );
 
                 redirect(
-                    "/booking-lapangan-sekolah/admin/index.php"
+                    "/admin/index.php"
                 );
             }
 
@@ -144,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             */
 
             redirect(
-                "/booking-lapangan-sekolah/user/index.php"
+                "/user/index.php"
             );
         }
     }
@@ -160,7 +161,7 @@ require_once __DIR__ . "/includes/header.php";
 
 <main class="auth-screen auth-screen-login">
     <section class="auth-panel" aria-labelledby="login-title">
-        <a class="auth-brand" href="/booking-lapangan-sekolah/" aria-label="Booking Lapangan, kembali ke beranda">
+        <a class="auth-brand" href="/index.php" aria-label="Booking Lapangan, kembali ke beranda">
             <span class="auth-brand-mark" aria-hidden="true">
                 <svg viewBox="0 0 48 48" role="img">
                     <circle cx="24" cy="24" r="21" fill="none" stroke="currentColor" stroke-width="2" />
@@ -201,8 +202,8 @@ require_once __DIR__ . "/includes/header.php";
         </form>
 
         <div class="auth-divider"><span>atau</span></div>
-        <p class="auth-switch">Belum punya akun? <a href="/booking-lapangan-sekolah/register.php">Daftar sekarang</a></p>
-        <a class="auth-back-link" href="/booking-lapangan-sekolah/">← Kembali ke beranda</a>
+        <p class="auth-switch">Belum punya akun? <a href="/register.php">Daftar sekarang</a></p>
+        <a class="auth-back-link" href="/index.php">← Kembali ke beranda</a>
         <p class="auth-footnote">Sistem Booking Lapangan Sekolah</p>
     </section>
 </main>

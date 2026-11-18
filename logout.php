@@ -19,4 +19,4 @@ if (ini_get("session.use_cookies")) {
 }
 
 
-redirect("/booking-lapangan-sekolah/login.php");
+redirect("/login.php");

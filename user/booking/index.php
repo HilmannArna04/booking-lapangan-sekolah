@@ -334,13 +334,13 @@ $tahun_tampil = date(
 require_once __DIR__ . "/../../includes/header.php";
 
 ?>
-<link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/booking-page.css">
+<link rel="stylesheet" href="/../../assets/css/booking-page.css">
 
 <div class="main booking-page-shell">
 
     <?php
     $active_menu = "booking";
-    require __DIR__ . "/../navbar.php";
+    require __DIR__ . "/../../includes/sidebar.php";
     ?>
 
 
@@ -373,41 +373,23 @@ require_once __DIR__ . "/../../includes/header.php";
         ====================================================== -->
 
         <div class="booking-filter-card">
-
-            <form
-                method="GET"
-                class="booking-filter-form">
-
-                <!-- TANGGAL -->
-
+            <form method="GET" class="booking-filter-form">
                 <div class="booking-date-control">
+                    <button type="button" class="date-arrow" onclick="ubahTanggal(-1)">‹</button>
 
-                    <button
-                        type="button"
-                        class="date-arrow"
-                        onclick="ubahTanggal(-1)">
-                        ‹
-                    </button>
-
-
-                    <label class="date-display">
-
-                        <span class="date-icon">
-                            ▣
+                    <label class="date-display" onclick="try { this.querySelector('input').showPicker(); } catch (e) {}">
+                        <span class="date-icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
                         </span>
 
                         <span>
-
-                            <strong>
-                                <?= e($tanggal_tampil) ?>
-                                <?= e($bulan_tampil) ?>
-                                <?= e($tahun_tampil) ?>
-                            </strong>
-
-                            <small>
-                                <?= e($hari_tampil) ?>
-                            </small>
-
+                            <strong><?= e($tanggal_tampil) ?> <?= e($bulan_tampil) ?> <?= e($tahun_tampil) ?></strong>
+                            <small><?= e($hari_tampil) ?></small>
                         </span>
 
                         <input
@@ -418,30 +400,16 @@ require_once __DIR__ . "/../../includes/header.php";
                             max="<?= e($max_date) ?>"
                             value="<?= e($tanggal) ?>"
                             onchange="this.form.submit()">
-
                     </label>
 
-
-                    <button
-                        type="button"
-                        class="date-arrow"
-                        onclick="ubahTanggal(1)">
-                        ›
-                    </button>
-
+                    <button type="button" class="date-arrow" onclick="ubahTanggal(1)">›</button>
                 </div>
 
-
-                <button
-                    type="submit"
-                    class="btn btn-primary booking-search-btn">
+                <button type="submit" class="btn btn-primary booking-search-btn">
                     Cari Jadwal
                 </button>
-
             </form>
-
         </div>
-
 
         <!-- =====================================================
              JADWAL
@@ -604,12 +572,6 @@ require_once __DIR__ . "/../../includes/header.php";
                                                                 $booking_data[$jadwal['id']]['nama_pemesan']
                                                             ) ?>
                                                         </strong>
-
-                                                        <small>
-                                                            <?= e(
-                                                                $booking_data[$jadwal['id']]['kode_booking']
-                                                            ) ?>
-                                                        </small>
 
                                                     <?php else: ?>
 
@@ -820,6 +782,23 @@ require_once __DIR__ . "/../../includes/header.php";
             tahun + "-" + bulan + "-" + hari;
 
         input.form.submit();
+    }
+
+    function bukaDatePicker() {
+        const input = document.getElementById("tanggal");
+        if (!input) return;
+
+        if (typeof input.showPicker === "function") {
+            try {
+                input.showPicker();
+            } catch (err) {
+                input.focus();
+                input.click();
+            }
+        } else {
+            input.focus();
+            input.click();
+        }
     }
 </script>
 

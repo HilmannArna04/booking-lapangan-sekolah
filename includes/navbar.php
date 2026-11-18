@@ -10,7 +10,7 @@
         <?php endif; ?>
     </div>
 </header>
-<!-- 
+
 <?php if ($_SESSION['role'] === 'user'): ?>
 
 <nav class="navbar">
@@ -22,28 +22,28 @@
     <div class="navbar-menu">
 
         <a
-            href="/booking-lapangan-sekolah/index.php"
+            href="/../index.php"
             class="<?= ($active_menu ?? '') === 'dashboard' ? 'active' : '' ?>"
         >
             Dashboard
         </a>
 
         <a
-            href="/booking-lapangan-sekolah/booking/index.php"
+            href="/../booking/index.php"
             class="<?= ($active_menu ?? '') === 'booking' ? 'active' : '' ?>"
         >
             Booking Lapangan
         </a>
 
         <a
-            href="/booking-lapangan-sekolah/profile.php"
+            href="/../profile.php"
             class="<?= ($active_menu ?? '') === 'profile' ? 'active' : '' ?>"
         >
             Profil
         </a>
 
         <a
-            href="/booking-lapangan-sekolah/logout.php"
+            href="/../logout.php"
         >
             Logout
         </a>
@@ -52,4 +52,4 @@
 
 </nav>
 
-<?php endif; ?> -->
+<?php endif; ?> 

@@ -38,7 +38,6 @@ require_once __DIR__ . "/../../includes/header.php";
 ?>
 
 <div class="main">
-    <?php require __DIR__ . "/../../includes/navbar.php"; ?>
     <?php require __DIR__ . "/../../includes/sidebar.php"; ?>
 
     <main class="content">
@@ -89,7 +88,10 @@ require_once __DIR__ . "/../../includes/header.php";
                                 <td>
                                     <div class="actions">
                                         <a class="btn btn-secondary" href="edit.php?id=<?= e($row['id']) ?>">Edit</a>
-                                        <a class="btn btn-danger" data-confirm="Ubah status pengguna ini?" href="toggle.php?id=<?= e($row['id']) ?>">Ubah Status</a>
+                                        <form method="POST" action="toggle.php" style="display:inline;" data-confirm="Ubah status pengguna ini?">
+                                            <input type="hidden" name="id" value="<?= e($row['id']) ?>">
+                                            <button type="submit" class="btn btn-danger">Ubah Status</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

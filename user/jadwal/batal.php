@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../config/app.php";
 require_user();
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirect("/booking-lapangan-sekolah/user/jadwal/");
+    redirect("/user/jadwal/");
 }
 
 $user_id = (int) $_SESSION['user_id'];
@@ -13,7 +13,7 @@ $booking_id = (int) ($_POST['booking_id'] ?? 0);
 
 if ($booking_id <= 0) {
     flash("jadwal", "Booking tidak valid.", "error");
-    redirect("/booking-lapangan-sekolah/user/jadwal/");
+    redirect("/user/jadwal/");
 }
 
 mysqli_begin_transaction($conn);
@@ -82,5 +82,5 @@ try {
     flash("jadwal", $e->getMessage(), "error");
 }
 
-redirect("/booking-lapangan-sekolah/user/jadwal/");
+redirect("/user/jadwal/");
 ?>
