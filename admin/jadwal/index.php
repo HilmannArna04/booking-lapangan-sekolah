@@ -47,7 +47,10 @@ require_once __DIR__ . "/../../includes/header.php";
         <?php show_flash(); ?>
 
         <div class="page-heading">
-            <div><h2>Data Jadwal</h2><p>Kelola slot waktu operasional lapangan.</p></div>
+            <div>
+                <h2>Data Jadwal</h2>
+                <p>Kelola slot waktu operasional lapangan.</p>
+            </div>
             <a class="btn btn-primary" href="tambah.php">+ Tambah Jadwal</a>
         </div>
 
@@ -57,8 +60,8 @@ require_once __DIR__ . "/../../includes/header.php";
                     <input type="date" name="tanggal" value="<?= e($tanggal) ?>">
                     <select name="lapangan_id">
                         <option value="0">Semua Lapangan</option>
-                        <?php while($c=mysqli_fetch_assoc($courts)): ?>
-                            <option value="<?= $c['id'] ?>" <?= $lapangan_id===$c['id']?'selected':'' ?>><?= e($c['nama']) ?></option>
+                        <?php while ($c = mysqli_fetch_assoc($courts)): ?>
+                            <option value="<?= $c['id'] ?>" <?= $lapangan_id === $c['id'] ? 'selected' : '' ?>><?= e($c['nama']) ?></option>
                         <?php endwhile; ?>
                     </select>
                     <button class="btn btn-secondary">Filter</button>
@@ -67,26 +70,40 @@ require_once __DIR__ . "/../../includes/header.php";
 
             <div class="table-wrap">
                 <table>
-                    <thead><tr><th>No</th><th>Lapangan</th><th>Tanggal</th><th>Jam</th><th>Status</th><th>Aksi</th></tr></thead>
-                    <tbody>
-                    <?php $no=1; while($row=mysqli_fetch_assoc($result)): ?>
+                    <thead>
                         <tr>
-                            <td><?= $no++ ?></td>
-                            <td><strong><?= e($row['nama_lapangan']) ?></strong></td>
-                            <td><?= e(date('d-m-Y', strtotime($row['tanggal']))) ?></td>
-                            <td><?= e(substr($row['jam_mulai'],0,5)) ?> - <?= e(substr($row['jam_selesai'],0,5)) ?></td>
-                            <td><span class="badge <?= $row['status']==='tersedia'?'status-active':'status-inactive' ?>"><?= e(ucfirst(str_replace('_',' ',$row['status']))) ?></span></td>
-                            <td>
-                                <div class="actions">
-                                    <a class="btn btn-secondary" href="edit.php?id=<?= $row['id'] ?>">Edit</a>
-                                    <a class="btn btn-danger" data-confirm="Hapus jadwal ini?" href="hapus.php?id=<?= $row['id'] ?>">Hapus</a>
-                                </div>
-                            </td>
+                            <th>No</th>
+                            <th>Lapangan</th>
+                            <th>Tanggal</th>
+                            <th>Jam</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
                         </tr>
-                    <?php endwhile; ?>
-                    <?php if(mysqli_num_rows($result)===0): ?>
-                        <tr><td colspan="6" class="empty">Belum ada jadwal.</td></tr>
-                    <?php endif; ?>
+                    </thead>
+                    <tbody>
+                        <?php $no = 1;
+                        while ($row = mysqli_fetch_assoc($result)): ?>
+                            <tr>
+                                <td><?= $no++ ?></td>
+                                <td><strong><?= e($row['nama_lapangan']) ?></strong></td>
+                                <td><?= e(date('d-m-Y', strtotime($row['tanggal']))) ?></td>
+                                <td><?= e(substr($row['jam_mulai'], 0, 5)) ?> - <?= e(substr($row['jam_selesai'], 0, 5)) ?></td>
+                                <td><span class="badge <?= $row['status'] === 'tersedia' ? 'status-active' : 'status-inactive' ?>"><?= e(ucfirst(str_replace('_', ' ', $row['status']))) ?></span></td>
+                                <td>
+                                    <div class="actions">
+                                        <a class="btn btn-secondary" href="edit.php?id=<?= $row['id'] ?>">Edit</a>
+                                        <form method="POST" action="hapus.php" class="js-delete-jadwal-form">
+                                            <input type="hidden" name="id" value="<?= (int)$row['id'] ?>">
+                                            <button class="btn btn-danger" type="submit">Hapus</button>
+                                        </form>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
+                        <?php if (mysqli_num_rows($result) === 0): ?>
+                            <tr>
+                                <td colspan="6" class="empty">Belum ada jadwal.</td>
+                            </tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -94,4 +111,5 @@ require_once __DIR__ . "/../../includes/header.php";
     </main>
 </div>
 
-<?php mysqli_stmt_close($stmt); require_once __DIR__ . "/../../includes/footer.php"; ?>
+<?php mysqli_stmt_close($stmt);
+require_once __DIR__ . "/../../includes/footer.php"; ?>

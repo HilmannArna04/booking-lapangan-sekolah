@@ -35,7 +35,7 @@ if ($court_id > 0) {
     $params[] = $court_id;
 }
 $where = implode(' AND ', $conditions);
-$sql = "SELECT b.kode_booking,b.status,u.name AS nama_pemesan,j.tanggal,j.jam_mulai,j.jam_selesai,l.nama AS nama_lapangan FROM bookings b JOIN users u ON u.id=b.user_id JOIN jadwal j ON j.id=b.jadwal_id JOIN lapangan l ON l.id=j.lapangan_id WHERE $where ORDER BY j.tanggal DESC,j.jam_mulai DESC";
+$sql = "SELECT b.kode_booking,b.status,b.keterangan_kerusakan,u.name AS nama_pemesan,j.tanggal,j.jam_mulai,j.jam_selesai,l.nama AS nama_lapangan FROM bookings b JOIN users u ON u.id=b.user_id JOIN jadwal j ON j.id=b.jadwal_id JOIN lapangan l ON l.id=j.lapangan_id WHERE $where ORDER BY j.tanggal DESC,j.jam_mulai DESC";
 $stmt = mysqli_prepare($conn, $sql);
 mysqli_stmt_bind_param($stmt, $types, ...$params);
 mysqli_stmt_execute($stmt);
@@ -72,14 +72,11 @@ while ($row = mysqli_fetch_assoc($sr)) {
 mysqli_stmt_close($stat_stmt);
 require_once __DIR__ . "/../../includes/header.php";
 ?>
-<link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/laporan.css">
+<link rel="stylesheet" href="/../../assets/css/laporan.css">
 <div class="main report-main">
     <?php require_once __DIR__ . "/../../includes/sidebar.php"; ?>
     <section class="report-content">
-        <header class="report-topbar">
-            <div class="report-breadcrumb">Dashboard <span>/</span> Laporan</div>
-            <div class="report-admin"><span class="report-avatar">A</span><span><?= report_e($_SESSION['name'] ?? 'Admin') ?><small>Administrator</small></span></div>
-        </header>
+        <?php require_once __DIR__ . "/../../includes/navbar.php"; ?>
         <main class="report-page">
             <div class="report-heading">
                 <div>
@@ -126,17 +123,42 @@ require_once __DIR__ . "/../../includes/header.php";
                     </div>
                 </article>
             </section>
-            <section class="report-panel">
-                <div class="panel-heading">
-                    <div>
-                        <h2>Statistik Penggunaan Lapangan</h2>
-                        <p>Jumlah booking berstatus selesai per lapangan.</p>
-                    </div><span class="period"><?= report_e(date('d/m/Y', strtotime($from))) ?> – <?= report_e(date('d/m/Y', strtotime($to))) ?></span>
+            <?php
+            // Skala sumbu Y grafik: pilih langkah rapi supaya maksimal ±5 garis bantu.
+            $y_step = 1;
+            foreach ([1, 2, 5, 10, 20, 25, 50, 100, 200, 500, 1000, 5000] as $cand) {
+                $y_step = $cand;
+                if (ceil($max_stat / $cand) <= 5) break;
+            }
+            $y_ticks = max(1, (int)ceil($max_stat / $y_step));
+            $y_max = $y_step * $y_ticks;
+            ?>
+            <section class="report-panel chart-panel">
+                <div class="chart-heading">
+                    <h2>Statistik Penggunaan Lapangan</h2>
                 </div>
-                <?php if ($stats): ?><div class="bar-list"><?php foreach ($stats as $s): ?><div class="bar-item">
-                                <div><span><?= report_e($s['nama_lapangan']) ?></span><strong><?= (int)$s['total'] ?> booking</strong></div>
-                                <div class="bar-track"><span style="width:<?= round((int)$s['total'] / $max_stat * 100, 2) ?>%"></span></div>
-                            </div><?php endforeach; ?></div><?php else: ?><p class="empty-small">Belum ada booking selesai pada periode ini.</p><?php endif; ?>
+                <?php if ($stats): ?>
+                    <div class="chart-body">
+                        <div class="chart-grid" role="img" aria-label="Grafik jumlah booking selesai per lapangan" style="min-width:<?= 36 + count($stats) * 72 ?>px">
+                            <div class="chart-y">
+                                <?php for ($t = 0; $t <= $y_ticks; $t++): ?><span style="bottom:<?= round($t / $y_ticks * 100, 2) ?>%"><?= $t * $y_step ?></span><?php endfor; ?>
+                            </div>
+                            <div class="chart-area">
+                                <?php for ($t = 0; $t <= $y_ticks; $t++): ?><i class="chart-line<?= $t === 0 ? ' base' : '' ?>" style="bottom:<?= round($t / $y_ticks * 100, 2) ?>%"></i><?php endfor; ?>
+                                <div class="chart-bars">
+                                    <?php foreach ($stats as $s): ?>
+                                        <div class="chart-col" title="<?= report_e($s['nama_lapangan']) ?>: <?= (int)$s['total'] ?> booking selesai">
+                                            <div class="chart-bar" style="height:<?= round((int)$s['total'] / $y_max * 100, 2) ?>%"><span class="chart-value"><?= (int)$s['total'] ?></span></div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <div class="chart-labels">
+                                <?php foreach ($stats as $s): ?><span><?= report_e($s['nama_lapangan']) ?></span><?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?><p class="empty-small">Belum ada booking selesai pada periode ini.</p><?php endif; ?>
                 <p class="report-note">Penggunaan aktual dihitung dari booking berstatus <strong>selesai</strong>.</p>
             </section>
             <section class="report-panel">
@@ -157,6 +179,7 @@ require_once __DIR__ . "/../../includes/header.php";
                                 <th>Tanggal</th>
                                 <th>Jam</th>
                                 <th>Status</th>
+                                <th>Keterangan Kerusakan</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -168,9 +191,10 @@ require_once __DIR__ . "/../../includes/header.php";
                                         <td><?= report_e(date('d/m/Y', strtotime($b['tanggal']))) ?></td>
                                         <td><?= report_e(substr($b['jam_mulai'], 0, 5)) ?>–<?= report_e(substr($b['jam_selesai'], 0, 5)) ?></td>
                                         <td><span class="status status-<?= report_e($b['status']) ?>"><?= report_e(ucfirst($b['status'])) ?></span></td>
+                                        <td><?= report_e($b['keterangan_kerusakan'] ?: '—') ?></td>
                                     </tr><?php endforeach;
                                     else: ?><tr>
-                                    <td colspan="7" class="empty-row">Tidak ada data booking untuk filter ini.</td>
+                                    <td colspan="8" class="empty-row">Tidak ada data booking untuk filter ini.</td>
                                 </tr><?php endif; ?>
                         </tbody>
                     </table>

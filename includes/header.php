@@ -8,6 +8,6 @@ $page_title = $page_title ?? "Booking Lapangan";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= e($page_title) ?> - Booking Lapangan</title>
-    <link rel="stylesheet" href="/booking-lapangan-sekolah/assets/css/style.css">
+    <link rel="stylesheet" href="/../assets/css/style.css">
 </head>
 <body>

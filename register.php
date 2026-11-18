@@ -3,7 +3,7 @@ require_once __DIR__ . "/config/koneksi.php";
 require_once __DIR__ . "/config/app.php";
 
 if (is_logged_in()) {
-    redirect("/booking-lapangan-sekolah/");
+    redirect("/index.php");
 }
 
 $error = "";
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             mysqli_stmt_close($stmt);
 
             flash("register", "Registrasi berhasil. Silakan login.");
-            redirect("/booking-lapangan-sekolah/login.php");
+            redirect("/login.php");
         }
     }
 }
@@ -75,11 +75,6 @@ require_once __DIR__ . "/includes/header.php";
                 <input class="form-control" type="email" name="email" required value="<?= e(old('email')) ?>">
             </div>
 
-            <div class="form-group">
-                <label>Nomor Telepon</label>
-                <input class="form-control" type="text" name="phone" value="<?= e(old('phone')) ?>">
-            </div>
-
             <div class="form-grid">
                 <div class="form-group">
                     <label>Password</label>
@@ -96,7 +91,7 @@ require_once __DIR__ . "/includes/header.php";
 
         <div class="auth-link">
             Sudah punya akun?
-            <a href="/booking-lapangan-sekolah/login.php">Login</a>
+            <a href="/login.php">Login</a>
         </div>
     </div>
 </div>
