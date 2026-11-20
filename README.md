@@ -41,7 +41,3 @@ Stack:
 - CRUD jadwal
 - Filter/search
 - Activity log admin
-
-## Catatan
-
-Fitur transaksi booking belum dibuat di W3. Booking dapat dikerjakan pada tahap berikutnya setelah data lapangan, jadwal, pengguna, dan autentikasi stabil.
